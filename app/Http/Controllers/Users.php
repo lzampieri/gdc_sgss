@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Mailer;
 
 class Users extends Controller
 {
 
-    public function login( $email ) {
+    public static function login( $email ) {
         // Check if user exists
         $user = User::where( 'email', $email )->first();
 
@@ -23,7 +24,7 @@ class Users extends Controller
         return redirect( route( 'signup' ) )->with( 'email', $email );
     }
 
-    public function create( Request $request ) {
+    public static function create( Request $request ) {
         $validated = $request->validate([
             'email' => 'required|unique:users,email',
             'name' => 'required',
@@ -37,6 +38,8 @@ class Users extends Controller
 
         Auth::login( $user );
 
-        return redirect( route('home') )->with( 'positive-message', 'Iscrizione correttamente effettuata!');
+        Mailer::welcome_mail();
+
+        return redirect( route('home') )->with( 'positive-message', 'Iscrizione correttamente effettuata!<br/>Ti è stata inviata una mail di conferma.');
     }
 }

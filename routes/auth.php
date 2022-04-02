@@ -4,7 +4,7 @@ use App\Http\Controllers\Users;
 use Laravel\Socialite\Facades\Socialite;
  
 Route::get('/auth/redirect', function () {
-    return Socialite::driver('google')->redirect();
+    return Socialite::driver('google')->scopes([ 'email' ])->redirect();
 })->name('auth.redirect');
  
 Route::get('/auth/callback', function () {

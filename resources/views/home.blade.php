@@ -2,6 +2,14 @@
     @auth
         <div class="card">
             Benvenuto {{ Auth::user()->name }}. <br />
+            @if ( Auth::user()->isalive )
+                Al momento sei vivo. Avanti così! <br />
+                Sfodera il tuo cucchiaio!
+                <x-logic.targets />
+            @else
+                Sei morto.<br/>
+                Addio, ci rivediamo alla prossima edizione.
+            @endif
         </div>
     @endauth
 
