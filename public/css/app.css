@@ -679,6 +679,12 @@ a {
 .gap-2 {
   gap: 0.5rem;
 }
+.gap-4 {
+  gap: 1rem;
+}
+.gap-8 {
+  gap: 2rem;
+}
 .border-x-2 {
   border-left-width: 2px;
   border-right-width: 2px;
@@ -688,7 +694,7 @@ a {
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 .bg-\[url\(\'\.\.\/assets\/img\/typewriter\.png\'\)\] {
-  background-image: url(../images/typewriter.png?867d8c1777645c240179582abf263682);
+  background-image: url(../images/typewriter.png?4d655d205d230c541bed35c60b8fafd4);
 }
 .bg-\[length\:auto_100\%\] {
   background-size: auto 100%;
@@ -770,6 +776,18 @@ h3 {
   -webkit-text-decoration-line: none;
           text-decoration-line: none;
 }
+.ib {
+  padding: 0.5rem;
+  -webkit-text-decoration-line: none;
+          text-decoration-line: none;
+}
+.ib:hover {
+  cursor: pointer;
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(246 242 228 / var(--tw-text-opacity));
+}
 .button-large {
   margin: 0.5rem;
   border-radius: 9999px;
@@ -810,6 +828,21 @@ h3 {
   border-color: rgb(30 140 69 / var(--tw-border-opacity));
   padding: 1rem;
 }
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  margin: 0.5rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(246 242 228 / var(--tw-bg-opacity));
+  text-transform: capitalize;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+.tooltiper:hover .tooltip {
+  visibility: visible;
+  z-index: 50;
+}
+
 @media (min-width: 768px) {
 
   .md\:w-3\/5 {

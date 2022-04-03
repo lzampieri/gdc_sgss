@@ -34,6 +34,11 @@
         @apply no-underline;
     }
 
+    .ib {
+        @apply p-2 no-underline;
+        @apply hover:bg-bgblack hover:text-white hover:cursor-pointer;
+    }
+
     .button-large {
         @apply button;
         @apply p-4 m-4;
@@ -45,4 +50,13 @@
     .happy-news {
         @apply border-2 border-green rounded-full p-4 m-4;
     }
+
+    .tooltip {
+        @apply invisible absolute bg-bg text-main capitalize m-2;
+    }
+      
+    .tooltiper:hover .tooltip {
+        @apply visible z-50
+    }
+      
 }
