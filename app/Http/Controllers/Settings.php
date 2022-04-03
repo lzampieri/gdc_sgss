@@ -29,7 +29,8 @@ class Settings extends Controller
         return Settings::$thedata;
     }
 
-    public function addoption( $key, $value ) {
-        return Setting::create( [ 'key' => $key, 'value' => $value ] );
+    public function updoption( $key, $value ) {
+        Setting::updateOrCreate( [ 'key' => $key ], [ 'value' => $value ] );
+        return back();
     }
 }

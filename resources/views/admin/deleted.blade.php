@@ -49,18 +49,10 @@
             
             <td>{{ $item->created_at }}</td>
             <td>
-                @if ( $item->theactor )
-                    {{ $item->theactor->name }}
-                @else
-                    <span class="text-red">Ignoto</span>
-                @endif
+                {{ $item->theactor ? $item->theactor->name : '<span class="text-red">Ignoto</span>' }}
             </td>
             <td>
-                @if ( $item->thetarget )
-                    {{ $item->thetarget->name }}
-                @else
-                    <span class="text-red">Ignoto</span>
-                @endif
+                {{ $item->thetarget ? $item->thetarget->name : '<span class="text-red">Ignoto</span>' }}
             </td>
             <td>
                 @if ( $item->finalstate )

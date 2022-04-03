@@ -34,6 +34,12 @@
         @apply no-underline;
     }
 
+    .selected_button {
+        @apply border-2 border-green rounded-full px-4 py-2 m-2;
+        @apply hover:bg-bgblack hover:text-white hover:cursor-pointer;
+        @apply no-underline;
+    }
+
     .ib {
         @apply p-2 no-underline;
         @apply hover:bg-bgblack hover:text-white hover:cursor-pointer;
