@@ -17,6 +17,12 @@
         <x-items.login_button />
     @endguest
 
+    @if ( App\Models\User::admin() )
+        <a class="text-center button" href="{{ route( 'admin.main' ) }}">
+            Admin
+        </a>
+    @endif
+
     <a class="text-center button" href="{{ route( 'regolamento' ) }}">
         Regolamento
     </a>

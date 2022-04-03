@@ -1,4 +1,7 @@
 <x-layouts.main>
+    <a class="text-center button" href="{{ url()->previous() }}">
+        Indietro
+    </a>
     <div class="card">
         <h2>1. OFFERTA</h2>
 

@@ -3,13 +3,13 @@
 @endphp
 
 @if ( $method == 'disabled' )
-    <div class="card w-2/5">
+    <div class="card mx-8">
         Non appena ti saranno assegnati degli obiettivi, compariranno qui. <br />
         Per il momento, non ti rimane altro che aspettare. <br />
         Aspetta, e prega.
     </div>
 @else
-    <div class="card w-2/5">
+    <div class="card mx-8">
         @php $targets = App\Http\Controllers\Targets::targets(); @endphp
         @if ( count( $targets ) > 1 )
             I tuoi obiettivi sono:

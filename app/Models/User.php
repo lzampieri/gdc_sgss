@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -22,6 +23,10 @@ class User extends Authenticatable
         'isalive'
     ];
 
+    protected $cast = [
+        'isadmin' => 'boolean'
+    ];
+
     public function events_done() {
         return $this->hasMany( Event::class, 'actor' );
     }
@@ -35,5 +40,9 @@ class User extends Authenticatable
         if( $last_event->count() )
             return (bool) $last_event[0]->finalstate;
         return True;
+    }
+
+    public static function admin() {
+        return Auth::check() && Auth::user()->isadmin;
     }
 }

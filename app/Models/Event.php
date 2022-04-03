@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Event extends Model
 {
-
+    use SoftDeletes;
     /**
      * The attributes that are mass assignable.
      *
@@ -18,11 +19,15 @@ class Event extends Model
         'finalstate',
     ];
 
-    public function actor() {
+    protected $cast = [
+        'finalstate' => 'boolean'
+    ];
+
+    public function theactor() {
         return $this->belongsTo( User::class, 'actor' );
     }
     
-    public function target() {
+    public function thetarget() {
         return $this->belongsTo( User::class, 'target' );
     }
 }

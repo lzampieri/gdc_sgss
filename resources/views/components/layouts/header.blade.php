@@ -13,4 +13,8 @@
 
     <!-- Style -->
     <link href="{{ asset(mix('css/app.css')) }}" rel="stylesheet">
+
+    {{-- Favicon --}}
+    <link rel="icon" href="{{ asset('images/favicon.png') }}">
+
 </head>
