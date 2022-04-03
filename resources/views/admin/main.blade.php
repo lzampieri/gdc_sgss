@@ -1,6 +1,11 @@
 <x-layouts.main>
-    <a class="button" href="{{ route('home') }}">Home</a>
-    <a class="button" href="{{ route('admin.option') }}">Opzioni di gioco</a>
+
+    <div class="flex flex-row flex-wrap">
+        <a class="button" href="{{ route('home') }}">Home</a>
+        <a class="button" href="{{ route('admin.option') }}">Opzioni di gioco</a>
+        <a class="button" href="{{ route('admin.teams') }}">Squadre</a>
+        <a class="button" href="{{ route('admin.cycles.single') }}">Ciclo singoli</a>
+    </div>
 
     <div class="card">
         <h2>Giocatori</h2>

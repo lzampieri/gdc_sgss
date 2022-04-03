@@ -10,6 +10,4 @@
         opt_title="Metodo di ciclazione"
         :opt_dict="json_encode([ 'disabled' => 'Nessun obiettivo', 'single_single' => 'Singolo ciclo, singolo obiettivo', 'single_double' => 'Singolo ciclo, obiettivo seguente e successivo'])">
     </x-items.update_setup>
-
-    <a class="button" href="{{ route('admin.cycles.single') }}">Modifica ciclo singolo</a>
 </x-layouts.main>

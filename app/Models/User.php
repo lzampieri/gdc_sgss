@@ -48,4 +48,12 @@ class User extends Authenticatable
     public static function admin() {
         return Auth::check() && Auth::user()->isadmin;
     }
+    
+    public function bossof() {
+        return $this->hasOne( Team::class, 'boss' );
+    }
+    
+    public function theteam() {
+        return $this->belongsTo( Team::class, 'team' );
+    }
 }

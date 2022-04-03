@@ -1,21 +1,21 @@
 @php
-    $players = App\Models\User::where( 'isadmin', False )->get()->filter( function ($i) { return $i->isalive; });
-    $cycle = json_decode( App\Http\Controllers\Settings::obtain( 'single_cycle' ) );
+    $teams = App\Models\Team::all()->filter( function ($i) { return $i->anyalive(); });
+    $cycle = json_decode( App\Http\Controllers\Settings::obtain( 'teams_cycle' ) );
 
-    $players = $players->sort( function ( $a, $b) use ($cycle ) {
+    $teams = $teams->sort( function ( $a, $b) use ( $cycle ) {
         return array_search( $a->id, $cycle ) - array_search( $b->id, $cycle );
     })
 @endphp
 
 <x-layouts.main>
-    <a class="button" href="{{ route('admin.main') }}"><- Indietro</a>
+    <a class="button" href="{{ route('admin.teams') }}"><- Indietro</a>
 
-    <h2>Ciclo singolo</h2>
+    <h2>Ciclo squadre</h2>
     <span>Trascina gli elementi per ordinarli. Il ciclo ha condizioni al contorno periodiche.</span>
-    <div class="flex flex-col justify-center" id="players">
-    @foreach ($players as $p)
-        <div class="border-2 border-main rounded-full px-4 py-2" data-id="{{ $p->id }}">
-            {{ $p->name }}
+    <div class="flex flex-col justify-center" id="teams">
+    @foreach ($teams as $t)
+        <div class="border-2 border-main rounded-full px-4 py-2" data-id="{{ $t->id }}">
+            {{ $t->stringify() }}
         </div>
     @endforeach
     </div>
@@ -26,7 +26,7 @@
     </form>
 
     <script type="text/javascript">
-        var el = document.getElementById('players');
+        var el = document.getElementById('teams');
         var sortable = Sortable.create(el,
             { onUpdate: (evt) => $('#cycle')[0].value = JSON.stringify( sortable.toArray().map( (i) => parseInt(i) ) ) }
         );

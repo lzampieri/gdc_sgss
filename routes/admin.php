@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Events;
 use App\Http\Controllers\Settings;
+use App\Http\Controllers\Teams;
 use App\Http\Controllers\Users;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,10 +19,15 @@ Route::middleware( ['admin'] )->group( function () {
     Route::get('/admin', function () { return view('admin.main'); })->name('admin.main');
     Route::get('/admin/deleted', function () { return view('admin.deleted'); })->name('admin.deleted');
     Route::get('/admin/option', function () { return view('admin.options'); })->name('admin.option');
+    Route::get('/admin/teams', function () { return view('admin.teams'); })->name('admin.teams');
+    Route::post('/admin/teams', [ Teams::class, 'saveAndCreate'] );
     Route::get('/admin/cycles/single', function () { return view('admin.cycles.single'); })->name('admin.cycles.single');
     Route::post('/admin/cycles/single', function (Request $request) { return redirect( route('option.update', [ 'key' => 'single_cycle', 'value' => $request->input('cycle') ] ) ); });
-    
-    // User admin
+    Route::get('/admin/cycles/teams', function () { return view('admin.cycles.teams'); })->name('admin.cycles.teams');
+    Route::post('/admin/cycles/teams', function (Request $request) { return redirect( route('option.update', [ 'key' => 'teams_cycle', 'value' => $request->input('cycle') ] ) ); });
+
+
+    // Users admin
     Route::get('/user/admin/{id}', [ Users::class, 'makeadmin' ] )->name('user.admin');
     Route::get('/user/deadmin/{id}', [ Users::class, 'deadmin' ] )->name('user.deadmin');
     Route::get('/user/trash/{id}', [ Users::class, 'maketrash' ] )->name('user.trash');
