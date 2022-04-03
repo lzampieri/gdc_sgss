@@ -25,6 +25,9 @@
         @apply font-bold text-lg w-full text-center
     }
     h3 {
+        @apply underline w-full text-lg text-center
+    }
+    h4 {
         @apply underline w-full text-center
     }
 

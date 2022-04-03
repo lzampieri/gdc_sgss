@@ -12,33 +12,32 @@
         <h3>1. 1 Orari di gioco</h3>
 
         La piattaforma è operativa 24 ore su 24, 7 giorni su 7.
-        visualizza dettaglio orari.
 
         <h3>1. 2 Responsabilità / Modificazioni / Proprietà Intellettuale</h3>
 
-        <h2>Limitazione di Responsabilità<h2>
+        <h4>Limitazione di Responsabilità</h4>
         Fatte salve tutte le altre limitazioni previste da questo Regolamento, tu acconsenti che noi non saremo responsabili nei confronti nostri o di terzi per alcuna perdita, danno o responsabilità derivante da arresti o momentanee defaillances del sistema o da una trasmissione dati difettosa, ritardata, interrotta, manipolata o impropria o per cause di forza maggiore. Mors inoltre non si assume alcuna responsabilità per l’esattezza, completezza e l’attualità dei servizi d’informazione e non è responsabile per i danni, di qualsiasi natura essi siano, derivanti da un eventuale uso improprio e/o illecito.
 
-        <h2>Modificazioni</h2>
+        <h4>Modificazioni</h4>
         Tu prendi atto ed espressamente accetti che noi possiamo modificare, aggiornare, o integrare la Piattaforma di Gioco in qualsiasi momento.
 
-        <h2>Proprietà Intellettuale</h2>
+        <h4>Proprietà Intellettuale</h4>
         Tutti i copyright, marchi commerciali, brevetti e altri diritti di proprietà intellettuale in qualsiasi documento o contenuto, inclusi, senza limite alcuno, software, dati, applicazioni, testi, fotografie, musica, suoni, video, grafica, marchi, simboli, illustrazioni e altro materiale o immagini mobili contenuti nel Sito (“Contenuto”) sono di nostra proprietà oppure ci sono stati concessi in licenza dai proprietari legittimi perchè siano usati come parte dei Servizi.
 
         Tu dichiari di essere a conoscenza del fatto che, utilizzando il Gioco e il Portale web di gioco, non acquisisci alcun diritto né sui Contenuti che su qualsiasi altra parte.
         In nessun caso tu potrai utilizzare i Contenuti del Portale e/o i Marchi senza anticipato consenso scritto da parte di Mors.
         Tu non potrai dar vita ad alcuna attività che possa violare i diritti di proprietà intellettuale di Mors o compiere qualsiasi azione che possa danneggiare l’immagine di Mors, del Portale di Gioco, di Società affiliate, dei loro dipendenti o collaboratori
 
-        <h2>Responsabilità giocatore</h2>
+        <h4>Responsabilità giocatore</h4>
         Il giocatore è unico ed esclusivo titolare del profilo di gioco che non può essere né ceduto né dato in uso a terzi.
         Il giocatore è il solo soggetto responsabile per l’utilizzo, in qualsiasi modo, del proprio profilo di gioco da parte di terzi.
         L’eventuale utilizzo, a qualsiasi titolo, da parte di terzi del profilo di gioco, comporta l’assunzione da parte del giocatore della piena responsabilità.
-        Nel caso in cui il giocatore consenta l’utilizzo del profilo di gioco da parte di terzi il presente contratto è risolto di diritto e l’eventuale saldo è messo a disposizione del giocatore stesso subordinatamente alla trasmissione del documento di identità. Si precisa, inoltre, che sono assolutamente vietati comportamenti collusivi, fraudolenti e di favoreggiamento del riciclaggio. Tra questi in particolare: [*****]. A tal proposito un team specializzato si interessa quotidianamente della verifica di eventuali comportamenti scorretti da parte del giocatore, che in caso di accertata frode, sarà segnalato alle autorità competenti per i provvedimenti del caso.
+        Nel caso in cui il giocatore consenta l’utilizzo del profilo di gioco da parte di terzi il presente contratto è risolto di diritto e l’eventuale saldo è messo a disposizione del giocatore stesso subordinatamente alla trasmissione del documento di identità. Si precisa, inoltre, che sono assolutamente vietati comportamenti collusivi, fraudolenti e di favoreggiamento del riciclaggio. A tal proposito un team specializzato si interessa quotidianamente della verifica di eventuali comportamenti scorretti da parte del giocatore, che in caso di accertata frode, sarà segnalato alle autorità competenti per i provvedimenti del caso.
 
         <h2>2. REGISTRAZIONE</h2>
 
         <h3>2.1 Registrazione</h3>
-        a) Al fine di accedere ai nostri servizi, devi registrarti come giocatore aprendo un apposito profilo tramite la compilazione da completarsi in ogni sua parte e in maniera accurata e corretta, di un modulo di registrazione che ptorebbe richiedere alcuni tra i seguenti dati: nome e cognome; sesso; indirizzo postale; data e luogo di nascita; codice fiscale; indirizzo e-mail (di seguito "nome utente"); password; domanda di sicurezza e [*****].
+        a) Al fine di accedere ai nostri servizi, devi registrarti come giocatore aprendo un apposito profilo tramite la compilazione da completarsi in ogni sua parte e in maniera accurata e corretta, di un modulo di registrazione che ptorebbe richiedere alcuni tra i seguenti dati: nome e cognome; sesso; indirizzo postale; data e luogo di nascita; codice fiscale; indirizzo e-mail (di seguito "nome utente"); password; domanda di sicurezza e professore più presente nei propri sogni erotici.
         Per quello che riguarda il tuo nome utente e la tua password, conservali al sicuro, onde evitare un utilizzo non autorizzato del tuo profilo di gioco.
         b) Ogni giocatore deve essere maggiore di diciotto (18) anni di età. E’ tassativamente vietato ai minorenni di registrarsi e giocare.
         ll gioco ai minori potrebbe essere impedito tramite il procedimento di registrazione e convalida dell’utente sulla piattaforma, in quanto alla registrazione potrebbe essere richiesto il codice fiscale ed un documento valido, attestante l’identità.
@@ -58,9 +57,9 @@
         <h3>2.4 Chiusura / Sospensione del Rapporto</h3>
         In caso di violazioni da parte tua delle norme del presente Regolamento ovvero nel caso di illecito utilizzo dei Servizi che ne costituiscono l’oggetto ci riserviamo il diritto, in qualsiasi momento, dietro semplice preavviso scritto e con espressa esclusione di qualsiasi diritto alla vittoria del Gioco in tuo favore, di sospendere ed eventualmente chiudere il tuo profilo rifiutando, in pendenza delle verifiche del caso, la convalida di qualsiasi uccisione, fatta comunque salva ogni ulteriore iniziativa ed azione legale a tutela di Mors che sarà altresì prontamente comunicata a tutte le competenti autorità, inclusa AAMM.
 
-            È in facoltà di entrambe le parti di chiudere il profilo di gioco in qualsiasi momento;
-            In caso di chiusura disposta da parte nostra; ti sarà inviata una comunicazione tramite posta elettronica o fax o raccomandata a/r con un preavviso di almeno quindici (15) giorni prima della data nella quale il recesso ha efficacia.
-            In caso di chiusura disposta da parte tua (indirizzando apposita comunicazione alla sede di Mors) potrai decidere di chiudere il tuo profilo e prelevare il tuo saldo contattando il servizio giocatori.
+        È in facoltà di entrambe le parti di chiudere il profilo di gioco in qualsiasi momento;
+        In caso di chiusura disposta da parte nostra; ti sarà inviata una comunicazione tramite posta elettronica o fax o raccomandata a/r con un preavviso di almeno quindici (15) giorni prima della data nella quale il recesso ha efficacia.
+        In caso di chiusura disposta da parte tua (indirizzando apposita comunicazione alla sede di Mors) potrai decidere di chiudere il tuo profilo e prelevare il tuo saldo contattando il servizio giocatori.
 
         <h2>3. GIOCO SICURO E RESPONSABILE</h2>
 
@@ -68,12 +67,12 @@
         In questi casi, le uccisioni affette saranno riconosciute al giocatore entro i limiti previsti dalla legge vigente.
         Mors ha inoltre elaborato il programma “GIOCA RESPONSABILE”, in sintonia con AAMM e con le sue politiche di GIOCO LEGALE E RESPONSABILE, volto a garantire il giusto equilibrio fra divertimento e responsabilità, relazionandosi con tutti gli attori che, a vario titolo, sono legittimamente coinvolti nell’industria del gioco lecito.
 
-        <h2>Accesso da parte dei minori</h2>
+        <h4>Accesso da parte dei minori</h4>
         Ogni giocatore deve essere maggiore di diciotto (18) anni di età. E’ tassativamente vietato ai minorenni di registrarsi e giocare.
         ll gioco ai minori è impedito tramite il procedimento di registrazione e convalida dell’utente sulla piattaforma, in quanto la piattaforma ha un sistema automatico di controllo dell’età dei giocatori tramite i server dell'Università degli Studi di Padova, che esclude la registrazione a chi non possiede i requisiti di età necessari.
         Potrebbe essere inoltre richiesta l’autodichiarazione da parte del giocatore in fase di iscrizione, comprovante la maggiore età.
 
-        <h2>Dipendenza dal gioco</h2>
+        <h4>Dipendenza dal gioco</h4>
         Ci sono molte attività che possono diventare un problema se non praticate con moderazione, come per esempio il consumo di sostanze alcoliche, lo shopping e giocare con i videogames.
         Anche per il Gioco del Cucchiaio vale la stessa regola della moderazione. Molto spesso è difficile riconoscere una dipendenza quando riguarda se stessi o un proprio caro, anche perché non necessariamente questa è legata a un’eccessiva perdita di denaro.
         Va in ogni caso sottolineato che la dipendenza dal Gioco può essere anche un sintomo che nasconde un problema più grande.
@@ -89,7 +88,7 @@
 
         Mors ha sviluppato una serie di misure per agevolare il Gioco in modo che rimangano un passatempo. Il tuo profilo è stato creato per il gioco sano e sicuro.
 
-        <h2>La dipendenza dal Gioco</h2>
+        <h4>La dipendenza dal Gioco</h4>
         La dipendenza dal Gioco del Cucchiaio è una patologia riconosciuta e certificata dalla Versione 23 (non ancora disponibile al pubblico) della Classificazione Statistica Internazionale delle malattie e dei problemi correlati alla salute dell’OMS (‘Organizzazione mondiale della salute) nonché classificata all’interno dei “Disturbi del controllo degli impulsi” e che ha grande affinità con il gruppo dei Disturbi Ossessivo-Compulsivi (DOC) e soprattutto con i comportamenti d’abuso e le dipendenze.
         Al fine di riconoscere i possibili rischi correlati alla dipendenza dal gioco di ogni singolo giocatore di seguito elenchiamo i principali sintomi prodotti dal Gioco e situazioni che vengono ritenute sintomatiche di una situazione di gioco patologico: senso di onnipotenza, presunzione, nervosismo, irritabilità, ansia, alterazione dell’umore e dell’autostima, distorsione dalla realtà, danni morali, economici, difficile o totale incapacità nel gestire lo studio, isolamento sociale.
 
@@ -103,7 +102,7 @@
 
         Il sito e il numero di telefono di cui sopra potrebbero non essere attivi in alcune aree del suolo italiano, comprese le regioni appartenenti nel 1815 ai Regni di Napoli, Sicilia, Sardegna e Lombardo-Veneto, allo Stato Pontificio, ai Ducati di Parma e Modena e al Granducato di Toscana.
 
-        <h2>Autoesclusione del Profilo di Gioco</h2>
+        <h4>Autoesclusione del Profilo di Gioco</h4>
         Se non riesci più ad avere il controllo del Gioco, avendo riscontrato i comportamenti elencati come sintomi di una dipendenza dal Gioco, ti ricordiamo che puoi contattare il sito https://gdcsgss.x10.mx/ per chiedere la sospensione definitiva del tuo Profilo di Gioco.
         Puoi anche chiedere di inibire il tuo accesso al nostro sito specificando l’arco temporale durante il quale non potrai collegarti per richiedere la convalida delle uccisioni e giocare, precisando se l’autoesclusione deve essere a tempo determinato oppure a tempo indeterminato.
         Nel caso in cui tu abbia espresso la volontà di sospendere il tuo profilo di gioco a tempo indeterminato, puoi tentare di chiedere la revoca della sospensione telefonando a Mors. Si precisa che la revoca dell’ordine di autoesclusione non avverrà prima che siano trascorsi settantadue anni dal momento dell’ordine stesso.
@@ -118,6 +117,6 @@
 
         <h2>7. RECLAMI</h2>
 
-        Qualora tu abbia dei reclami da fare, ti preghiamo di non farli. Se porprio non puoi farne a meno, riflettici un po' su, finché non ti accorgerai che effettivamente potevi farne a meno. No, davvero, è meglio che tu ti faccia passare la voglia di fare reclami. Ad ogni modo, se lo ritenessi ancora necessario, scrivi a mors.vobiscum@gmail.com, ma sii pronto ad accettare le conseguenze del caso. Per notificare eventuali e specifici reclami ad AAMM, puoi seguire la procedura indicata nella Carta dei Servizi, la quale può essere rinvenuta al piano -2 della Residenza Nord Piovego (probabilmente).
+        Qualora tu abbia dei reclami da fare, ti preghiamo di non farli. Se proprio non puoi farne a meno, riflettici un po' su, finché non ti accorgerai che effettivamente potevi farne a meno. No, davvero, è meglio che tu ti faccia passare la voglia di fare reclami. Ad ogni modo, se lo ritenessi ancora necessario, scrivi a mors.vobiscum@gmail.com, ma sii pronto ad accettare le conseguenze del caso. Per notificare eventuali e specifici reclami ad AAMM, puoi seguire la procedura indicata nella Carta dei Servizi, la quale può essere rinvenuta al piano -2 della Residenza Nord Piovego (probabilmente).
     </div>
 </x-layouts.main>

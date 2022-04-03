@@ -19,7 +19,7 @@ $email = old( 'email', session( 'email' ) );
                     <span class="text-red"> {{ $message }} </span>
                 @enderror
 
-                <label class="mt-6">Nome</label>
+                <label class="mt-6">Nome e cognome</label>
                 <input type="text" name="name" id="name" class="w-full mt-2" value="{{ old('name', null ) }}"/>
                 @error( 'name' )
                     <span class="text-red"> {{ $message }} </span>
