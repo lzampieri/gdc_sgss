@@ -28,12 +28,14 @@ class Users extends Controller
         $validated = $request->validate([
             'email' => 'required|unique:users,email',
             'name' => 'required',
+            'birthday' => 'required|date|before:today',
             'conditions' => 'accepted'
         ]);
 
         $user = User::create([
             'email' => $validated['email'],
-            'name' => $validated['name']
+            'name' => $validated['name'],
+            'birthday' => $validated['birthday']
         ]);
 
         Auth::login( $user );

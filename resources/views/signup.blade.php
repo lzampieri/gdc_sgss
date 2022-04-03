@@ -25,6 +25,12 @@ $email = old( 'email', session( 'email' ) );
                     <span class="text-red"> {{ $message }} </span>
                 @enderror
 
+                <label class="mt-6">Data di nascita</label>
+                <input type="date" name="birthday" id="birthday" class="w-full mt-2" value="{{ old('birthday', null ) }}"/>
+                @error( 'birthday' )
+                    <span class="text-red"> {{ $message }} </span>
+                @enderror
+
                 <span class="mt-6"><input type="checkbox" name="conditions" id="conditions" />
                 Accetto i <a href="{{ route('terms'); }}" target="blank">termini e le condizioni</a> del gioco.</span>
                 @error( 'conditions' )
