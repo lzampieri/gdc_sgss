@@ -42,7 +42,7 @@ class Users extends Controller
 
         Mailer::welcome_mail();
 
-        return redirect( route('home') )->with( 'positive-message', 'Iscrizione correttamente effettuata!<br/>Ti è stata inviata una mail di conferma.');
+        return redirect( route('home') )->with( 'positive-message', 'Iscrizione correttamente effettuata!<br/>Ti è stata inviata una mail di conferma.<br/>Verifica di averla ricevuta, controllando anche la cartella SPAM.');
     }
 
     public static function makeadmin( $id ) {

@@ -67,5 +67,9 @@
     .tooltiper:hover .tooltip {
         @apply visible z-50
     }
+
+    .force-hidden {
+        display: none !important;
+    }
       
 }

@@ -1,5 +1,5 @@
 @php
-    $players = App\Models\User::where( 'isadmin', False )->get()->filter( function ($i) { return $i->isalive; });
+    $players = App\Models\User::where( 'isadmin', False )->get()->filter( function ($i) { return $i->is_alive; });
     $cycle = json_decode( App\Http\Controllers\Settings::obtain( 'single_cycle' ) );
 
     $players = $players->sort( function ( $a, $b) use ($cycle ) {

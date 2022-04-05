@@ -10,7 +10,7 @@
     <div class="card">
         <h2>Giocatori</h2>
         <h3> {{ App\Models\User::where( 'isadmin', False )->count() }} giocatori iscritti</h3>
-        <h3> {{ App\Models\User::where( 'isadmin', False )->get()->filter( function ($i) { return $i->isalive; })->count() }} giocatori vivi</h3>
+        <h3> {{ App\Models\User::where( 'isadmin', False )->get()->filter( function ($i) { return $i->is_alive; })->count() }} giocatori vivi</h3>
         <table class="table-auto">
         <thead>
             <tr>
@@ -27,7 +27,7 @@
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->email }}</td>
                 <td>
-                    @if ( $item->isalive )
+                    @if ( $item->is_alive )
                         <span class="text-green">Vivo</span>
                     @else
                         <span class="text-red">Morto</span>
@@ -37,7 +37,7 @@
                     {{ $item->created_at }}
                 </td>
                 <td>
-                    @if ( $item->isalive )
+                    @if ( $item->is_alive )
                         <a class="ib fa-solid fa-skull tooltiper" href="{{ route('user.kill', [ 'id' => $item->id ] ) }}"><div class="tooltip">Uccidi</div></a>
                     @else 
                         <a class="ib fa-solid fa-cross tooltiper" href="{{ route('user.dekill', [ 'id' => $item->id ] ) }}"><div class="tooltip">Risorgi</div></a>
@@ -91,7 +91,7 @@
         
         <h3>Giocatori vivi</h3>
         @foreach ( App\Models\User::where( 'isadmin', False )->get() as $item )
-            @if ( $item->isalive )
+            @if ( $item->is_alive )
                 {{ $item->email }},
             @endif
         @endforeach

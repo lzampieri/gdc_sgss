@@ -23,7 +23,8 @@ class User extends Authenticatable
     ];
 
     protected $appends = [
-        'isalive'
+        'is_alive',
+        'is_team_boss'
     ];
 
     protected $cast = [
@@ -38,11 +39,18 @@ class User extends Authenticatable
         return $this->hasMany( Event::class, 'target' );
     }
 
-    public function getIsaliveAttribute() {
+    public function getIsAliveAttribute() {
         $last_event = $this->events_suffered()->latest()->get();
         if( $last_event->count() )
             return (bool) $last_event[0]->finalstate;
         return True;
+    }
+    
+    public function getIsTeamBossAttribute() {
+        $theteam = $this->theteam;
+        if( !is_null( $theteam ) && $theteam == $this->bossof )
+            return True;
+        else return False;
     }
 
     public static function admin() {

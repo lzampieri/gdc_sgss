@@ -10,4 +10,6 @@ module.exports = {
     plugins: [
         require('@tailwindcss/forms')
     ],
+    // safelist:
+    //     require( './resources/js/safelist.js' )
 }

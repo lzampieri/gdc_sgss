@@ -1,0 +1,15 @@
+@if ( App\Http\Controllers\Settings::obtain( 'team_visible' ) == 1 )
+    <div class="card mx-8 flex flex-col items-center">
+        <h2>La tua squadra</h2>
+        @forelse ( App\Http\Controllers\Teams::myTeam() as $p )
+            <div>
+                @if ( $p->is_team_boss )
+                    <i class="fa-solid fa-hat-wizard"></i>
+                @endif
+                {{ $p->name }}
+            </div>
+        @empty
+            <i>Non risulti in nessuna squadra.</i>
+        @endforelse
+    </div>
+@endif

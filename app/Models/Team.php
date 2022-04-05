@@ -21,12 +21,16 @@ class Team extends Model
         return $this->hasMany( User::class, 'team' );
     }
 
-    public function anyalive() {
-        return $this->users()->get()->filter( function ( $u ) { return $u->isalive; } )->count() > 0;
+    public function anyAlive() {
+        return $this->usersAlive()->count() > 0;
+    }
+    
+    public function usersAlive() {
+        return $this->users->filter( function ( $u ) { return $u->is_alive; } );
     }
 
     public function stringify() {
-        $users = $this->users()->get()->filter( function ( $u ) { return $u->isalive; } );
+        $users = $this->users()->get()->filter( function ( $u ) { return $u->is_alive; } );
         $string = "";
         foreach ( $users as $u ) {
             $string .= $u->name . ", ";

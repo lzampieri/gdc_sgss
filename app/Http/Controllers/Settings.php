@@ -3,13 +3,56 @@
 namespace App\Http\Controllers;
 
 use App\Models\Setting;
-use Illuminate\Http\Request;
 
 class Settings extends Controller
 {
-    
-
     private static $thedata = array();
+
+    const editable = [
+        [
+            'name' => 'signup_enabled',
+            'title' => 'Iscrizioni',
+            'dict' => [
+                '0' => 'Chiuse',
+                '1' => 'Aperte'
+            ]
+        ],
+        [
+            'name' => 'team_visible',
+            'title' => 'Propria squadra',
+            'dict' => [
+                '0' => 'Nascosta',
+                '1' => 'Visible'
+            ]
+        ],
+        [
+            'name' => 'edit_team_boss',
+            'title' => 'Cambio capo squadra',
+            'dict' => [
+                '0' => 'Bloccato',
+                '1' => 'Permesso'
+            ]
+        ],
+        [
+            'name' => 'method',
+            'title' => 'Metodo di ciclazione',
+            'dict' => [
+                'disabled' => 'Nessun obiettivo',
+                'single_single' => 'Singolo ciclo, singolo obiettivo',
+                'single_double' => 'Singolo ciclo, obiettivo seguente e successivo',
+                'teams_single_single' => 'Singolo ciclo, singola squadra come obiettivo, squadre'
+            ]
+        ],
+    ];
+
+    const reserved = [
+        [
+            'name' => 'single_cycle'
+        ],
+        [
+            'name' => 'teams_cycle'
+        ]
+        ];
 
     public static function load_static() {
         if( count( Settings::$thedata ) == 0 ) {

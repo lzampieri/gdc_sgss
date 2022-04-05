@@ -604,12 +604,6 @@ a {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
 }
-.fixed {
-  position: fixed;
-}
-.bottom-0 {
-  bottom: 0px;
-}
 .m-8 {
   margin: 2rem;
 }
@@ -649,17 +643,20 @@ a {
 .hidden {
   display: none;
 }
-.h-\[10\%\] {
-  height: 10%;
-}
 .max-h-\[250px\] {
   max-height: 250px;
 }
-.min-h-\[40px\] {
-  min-height: 40px;
-}
 .min-h-\[100px\] {
   min-height: 100px;
+}
+.min-h-\[200px\] {
+  min-height: 200px;
+}
+.min-h-\[50px\] {
+  min-height: 50px;
+}
+.min-h-\[10px\] {
+  min-height: 10px;
 }
 .w-full {
   width: 100%;
@@ -697,11 +694,11 @@ a {
 .justify-center {
   justify-content: center;
 }
-.gap-2 {
-  gap: 0.5rem;
-}
 .gap-4 {
   gap: 1rem;
+}
+.gap-2 {
+  gap: 0.5rem;
 }
 .rounded-full {
   border-radius: 9999px;
@@ -720,18 +717,6 @@ a {
 .border-main {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
-}
-.bg-\[url\(\'\.\.\/assets\/img\/typewriter\.png\'\)\] {
-  background-image: url(../images/typewriter.png?4d655d205d230c541bed35c60b8fafd4);
-}
-.bg-\[length\:auto_100\%\] {
-  background-size: auto 100%;
-}
-.bg-bottom {
-  background-position: bottom;
-}
-.bg-no-repeat {
-  background-repeat: no-repeat;
 }
 .p-4 {
   padding: 1rem;
@@ -757,6 +742,9 @@ a {
 }
 .opacity-50 {
   opacity: 0.5;
+}
+.opacity-40 {
+  opacity: 0.4;
 }
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -903,6 +891,13 @@ h4 {
 .tooltiper:hover .tooltip {
   visibility: visible;
   z-index: 50;
+}
+.force-hidden {
+        display: none !important;
+    }
+
+.hover\:opacity-100:hover {
+  opacity: 1;
 }
 
 @media (min-width: 768px) {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Settings;
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,7 +11,6 @@ class Targets extends Controller
 {
 
     public function targets( ) {
-        $user = Auth::user();
         $method = Settings::obtain( 'method' );
         
         // Single cycle with single target
@@ -18,12 +18,12 @@ class Targets extends Controller
             // Load the cycle
             $cycle = json_decode( Settings::obtain( 'single_cycle' ) );
             $index = array_search( Auth::user()->id, $cycle );
-            if( $index == False ) {
+            if( $index === False ) {
                 return [ ];
             }
             do {
                 $target = User::find( $cycle[ ( ++$index ) % count( $cycle ) ] );
-            } while( !$target->isalive );
+            } while( !$target->is_alive );
             return [ $target ];
         }
         // Single cycle with double target
@@ -36,12 +36,29 @@ class Targets extends Controller
             }
             do {
                 $target1 = User::find( $cycle[ ( ++$index ) % count( $cycle ) ] );
-            } while( !$target1->isalive );
+            } while( !$target1->is_alive );
             do {
                 $target2 = User::find( $cycle[ ( ++$index ) % count( $cycle ) ] );
-            } while( !$target2->isalive );
+            } while( !$target2->is_alive );
             return [ $target1, $target2 ];
         }
+        // Single cycle with single target
+        if( $method == 'teams_single_single' ) {
+            // Load the cycle
+            $cycle = json_decode( Settings::obtain( 'teams_cycle' ) );
+            $index = array_search( Auth::user()->theteam->id, $cycle );
+            if( $index === False ) {
+                return [ ];
+            }
+            do {
+                $target = Team::find( $cycle[ ( ++$index ) % count( $cycle ) ] );
+            } while( !$target->anyAlive() );
+            
+            return [ $target ];
+        }
+
+        // No targets
+        return [];
     }
 
 }

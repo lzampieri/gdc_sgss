@@ -1,25 +1,44 @@
 @php
-    $method = App\Http\Controllers\Settings::obtain( 'method' );
+    $targets = App\Http\Controllers\Targets::targets();
 @endphp
 
-@if ( $method == 'disabled' )
+@if ( count( $targets ) == 0 )
+
     <div class="card mx-8">
         Non appena ti saranno assegnati degli obiettivi, compariranno qui. <br />
         Per il momento, non ti rimane altro che aspettare. <br />
         Aspetta, e prega.
     </div>
-@else
-    <div class="card mx-8">
-        @php $targets = App\Http\Controllers\Targets::targets(); @endphp
+
+@elseif ( $targets[0] instanceof App\Models\User )
+
+    <div class="card mx-8 flex flex-col items-center">
         @if ( count( $targets ) > 1 )
-            I tuoi obiettivi sono:
+            <h2>I tuoi obiettivi</h2>
         @else
-            Il tuo obiettivo è:
+            <h2>Il tuo obiettivo</h2>
         @endif
         @foreach ( $targets as $item )
-            <h3>{{ $item->name }}</h3>
+            <span>{{ $item->name }}</span>
         @endforeach
     </div>
-@endif
 
-{{-- "__info" => "-2: Tregua<br/>-1: Manutenzione<br/>0: Iscrizioni<br/>1: Squadre<br/>2: Due cicli<br/>3: Sfida finale<br/>4: Premiazioni<br/>5: Preparazione prossima edizione<br/>6: Ciclo unico con obiettivo seguente + successivo<br/>7: Ciclo unico con obiettivo seguente"), --}}
+@elseif ( $targets[0] instanceof App\Models\Team )
+
+    @foreach ($targets as $team)
+        <div class="card mx-8 flex flex-col items-center">
+            <h2>Squadra avversaria</h2>
+            @forelse ( $team->usersAlive() as $u )
+                <div>
+                    @if ( $u->is_team_boss )
+                        <i class="fa-solid fa-hat-wizard"></i>
+                    @endif
+                    {{ $u->name }}
+                </div>
+            @empty
+                <i>Nessun giocatore nella squadra avversaria.</i>
+            @endforelse
+        </div>
+    @endforeach
+
+@endif
