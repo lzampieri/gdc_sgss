@@ -17,7 +17,7 @@ class Users extends Controller
         // If the user exists, login and redirect to homepage
         if( $user ) {
             Auth::login( $user );
-            return redirect( route('home') );
+            return redirect()->intended( route('home') );
         }
 
         // Else, return the signup module

@@ -16,7 +16,7 @@ class AdminAuthenticate
         } else if( Auth::check() ) {
             return redirect( route('home') )->with('negative-message','Non hai i privilegi per accedere a questa pagina');
         } else {
-            return redirect( route('auth.redirect') );
+            return redirect()->guest(route('auth.redirect') );
         }
     }
 }

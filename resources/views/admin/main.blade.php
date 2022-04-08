@@ -29,6 +29,9 @@
                 <td>
                     @if ( $item->is_alive )
                         <span class="text-green">Vivo</span>
+                        @if ( $item->is_pending )
+                            <span class="text-red"> (Morte presunta)</span>
+                        @endif
                     @else
                         <span class="text-red">Morto</span>
                     @endif

@@ -25,4 +25,8 @@ class Mailer extends Controller
             env( 'MAIL_HEADERS' )
         );
     }
+
+    public static function pending_create( $pending ) {
+        // TODO
+    }
 }

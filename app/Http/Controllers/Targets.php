@@ -46,9 +46,13 @@ class Targets extends Controller
         if( $method == 'teams_single_single' ) {
             // Load the cycle
             $cycle = json_decode( Settings::obtain( 'teams_cycle' ) );
-            $index = array_search( Auth::user()->theteam->id, $cycle );
+            $theteam = Auth::user()->theteam;
+            if( $theteam == null ) {
+                return [];
+            }
+            $index = array_search( $theteam->id, $cycle );
             if( $index === False ) {
-                return [ ];
+                return [];
             }
             do {
                 $target = Team::find( $cycle[ ( ++$index ) % count( $cycle ) ] );

@@ -24,6 +24,7 @@ class User extends Authenticatable
 
     protected $appends = [
         'is_alive',
+        'is_pending',
         'is_team_boss'
     ];
 
@@ -44,6 +45,21 @@ class User extends Authenticatable
         if( $last_event->count() )
             return (bool) $last_event[0]->finalstate;
         return True;
+    }
+    
+    public function pendings_done() {
+        return $this->hasMany( PendingKill::class, 'actor' );
+    }
+
+    public function pendings_suffered() {
+        return $this->hasMany( PendingKill::class, 'target' );
+    }
+
+    public function getIsPendingAttribute() {
+        $pendings_count = $this->pendings_suffered()->count();
+        if( $pendings_count > 0 )
+            return True;
+        return False;
     }
     
     public function getIsTeamBossAttribute() {
