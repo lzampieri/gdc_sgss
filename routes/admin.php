@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admins;
 use App\Http\Controllers\Events;
 use App\Http\Controllers\Settings;
 use App\Http\Controllers\Teams;
@@ -9,14 +10,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 
-Route::middleware( ['admin'] )->group( function () {
+Route::middleware( ['auth.admin'] )->group( function () {
 
     // Manage the database
     Route::get('/migrate', function () { return Artisan::call('migrate'); });
     Route::get('/option/{key}/{value}', [ Settings::class, 'updoption' ] )->name('option.update');
 
+
     // Admin frontend
     Route::get('/admin', function () { return view('admin.main'); })->name('admin.main');
+    Route::post('/admin/add_event', [ Admins::class, 'add_event' ] )->name('admin.add.event');
+    Route::post('/admin/add_pending', [ Admins::class, 'add_pending' ] )->name('admin.add.pending');
     Route::get('/admin/deleted', function () { return view('admin.deleted'); })->name('admin.deleted');
     Route::get('/admin/option', function () { return view('admin.options'); })->name('admin.option');
     Route::get('/admin/teams', function () { return view('admin.teams'); })->name('admin.teams');

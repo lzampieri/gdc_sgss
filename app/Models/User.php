@@ -68,10 +68,6 @@ class User extends Authenticatable
             return True;
         else return False;
     }
-
-    public static function admin() {
-        return Auth::check() && Auth::user()->isadmin;
-    }
     
     public function bossof() {
         return $this->hasOne( Team::class, 'boss' );

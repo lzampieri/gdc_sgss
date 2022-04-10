@@ -145,6 +145,7 @@
         </tbody>
         </table>
     </div>
+    <x-admin.add_event />
 
     <div class="card">
         <h2>Eventi in attesa</h2>
@@ -179,6 +180,7 @@
         </tbody>
         </table>
     </div>
+    <x-admin.add_pending />
 
     <a href="{{ route( 'admin.deleted' ) }}">Eventi eliminati</a>
 </x-layouts.main>

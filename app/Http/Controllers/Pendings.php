@@ -28,17 +28,20 @@ class Pendings extends Controller
 
     public static function approve( $claimId ) {
         $pendingKill = PendingKill::find( $claimId );
-        if( ( $pendingKill->actor != Auth::user()->id ) && !( Auth::user()->isadmin ) ) {
+        if( $pendingKill == null ) {
+            return back()->with( 'negative-message', 'Errore: questa uccisione è già stata confermata o annullata.');
+        }
+        if( ( $pendingKill->target != Auth::user()->id ) && !( Auth::user()->isadmin ) ) {
             return back()->with( 'negative-message', 'Errore: non hai il permesso di confermare questa uccisione.');
         }
-
+        
         $event = Event::create([
             'actor' => $pendingKill->actor,
             'target' => $pendingKill->target,
             'finalstate' => False
         ]);
 
-        Mailer::pending_approved( $event );
+        Mailer::event_created( $event );
         
         $pendingKill->delete();
         
@@ -47,6 +50,9 @@ class Pendings extends Controller
     
     public static function reject( $claimId ) {
         $pendingKill = PendingKill::find( $claimId );
+        if( $pendingKill == null ) {
+            return back()->with( 'negative-message', 'Errore: questa uccisione è già stata confermata o annullata.');
+        }
         if( ($pendingKill->actor != Auth::user()->id) && ($pendingKill->target != Auth::user()->id) && !( Auth::user()->isadmin ) ) {
             return back()->with( 'negative-message', 'Errore: non hai il permesso di annullare questa uccisione.');
         }

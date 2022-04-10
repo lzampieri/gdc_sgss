@@ -51,15 +51,16 @@ class Mailer extends Controller
         );
     }
 
-    public static function pending_approved( Event $event ) {
+    public static function event_created( Event $event ) {
         $target_name = $event->thetarget->name;
         $actor_name = $event->theactor->name;
+        $type = $event->finalState ? "resurrezione" : "morte";
 
         mail(
             env( 'MAIL_LIST' ),
-            'Notifica di morte',
+            'Notifica di ' . $type,
             <<<TXT
-                Con la presente a notificare la morte di $target_name a mano di $actor_name.
+                Con la presente a notificare la $type di $target_name a mano di $actor_name.
                 L'amministrazione.
             TXT,
             env( 'MAIL_HEADERS' )

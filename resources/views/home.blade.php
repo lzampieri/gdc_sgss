@@ -10,14 +10,21 @@
                 Addio, ci rivediamo alla prossima edizione.
             @endif
         </div>
-    @endauth
 
-    @auth
-        <x-logic.my_team />
-    @endauth
+        @if ( Auth::user()->is_alive )
+            @if ( Auth::user()->is_pending )
+                <x-logic.pendings />
+            @else
+                <x-logic.my_team />
+                <x-logic.targets />
+            @endif
+        @endif
 
-    @auth
-        <x-logic.targets />
+        @if ( Auth::user()->isadmin )
+            <a class="text-center button" href="{{ route( 'admin.main' ) }}">
+                Admin
+            </a>
+        @endif
     @endauth
 
     @guest
@@ -26,12 +33,6 @@
   		</div>
         <x-items.login_button />
     @endguest
-
-    @if ( App\Models\User::admin() )
-        <a class="text-center button" href="{{ route( 'admin.main' ) }}">
-            Admin
-        </a>
-    @endif
 
     <a class="text-center button" href="{{ route( 'regolamento' ) }}">
         Regolamento
