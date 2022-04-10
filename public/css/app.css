@@ -829,6 +829,11 @@ h4 {
   --tw-text-opacity: 1;
   color: rgb(246 242 228 / var(--tw-text-opacity));
 }
+.ib-disabled {
+  padding: 0.5rem;
+  -webkit-text-decoration-line: none;
+          text-decoration-line: none;
+}
 .button-large {
   margin: 0.5rem;
   border-radius: 9999px;

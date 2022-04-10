@@ -19,7 +19,14 @@
             <h2>Il tuo obiettivo</h2>
         @endif
         @foreach ( $targets as $item )
-            <span>{{ $item->name }}</span>
+            <span>
+                {{ $item->name }}
+                @if ( $item->is_pending )
+                    <i class="ib-disabled fa-solid fa-hourglass"></i>
+                @else
+                    <a class="ib fa-solid fa-spoon" href="{{ route('pending.create', [ 'userId' => $item->id ] ) }}"></a>
+                @endif
+            </span>
         @endforeach
     </div>
 
@@ -34,6 +41,11 @@
                         <i class="fa-solid fa-hat-wizard"></i>
                     @endif
                     {{ $u->name }}
+                    @if ( $u->is_pending )
+                        <i class="ib-disabled fa-solid fa-hourglass"></i>
+                    @else
+                        <a class="ib fa-solid fa-spoon" href="{{ route('pending.create', [ 'userId' => $u->id ] ) }}"></a>
+                    @endif
                 </div>
             @empty
                 <i>Nessun giocatore nella squadra avversaria.</i>

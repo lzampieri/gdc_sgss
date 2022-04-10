@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use App\Models\PendingKill;
 
 class Mailer extends Controller
 {
@@ -26,7 +27,26 @@ class Mailer extends Controller
         );
     }
 
-    public static function pending_create( $pending ) {
-        // TODO
+    public static function pending_create( PendingKill $pending ) {
+        $target_name = $pending->thetarget->name;
+        $actor_name = $pending->theactor->name;
+        $approve_route = route('pending.approve', [ 'claimId' => $pending->id ] );
+        $reject_route = route('pending.reject', [ 'claimId' => $pending->id ] );
+        $home_route = route('home');
+
+        mail(
+            $pending->thetarget->email,
+            'Sei morto?',
+            <<<TXT
+                Ciao $target_name!
+                $actor_name afferma di averti ucciso.
+                Clicca <a href="$approve_route">qui</a> per confermare, oppure <a href="$reject_route">qui</a> se si tratta di una barbara menzogna.
+                Se i link non funzionano, è sufficiente accedere al <a href="$home_route">sito</a> per confermare o rinnegare.
+                Si raccomanda particolare celerità e onestà.
+                Mors Vobiscum
+                mors.vobiscum@gmail.com
+            TXT,
+            env( 'MAIL_HEADERS' )
+        );
     }
 }

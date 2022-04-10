@@ -25,9 +25,9 @@ Route::get('/terms', function () { return view('terms'); })->name( 'terms' );
 
 Route::middleware( ['auth'] )->group( function () {
     // Kill and confirm
-    Route::get('/pending_create/{userId}', [ Pendings::class, 'create' ])->name('pending_create');
-    Route::get('/pending_approve/{claimId}', [ Pendings::class, 'approve' ])->name('pending_approve');
-    Route::get('/pending_reject/{claimId}', [ Pendings::class, 'reject' ])->name('pending_reject');
+    Route::get('/pending_create/{userId}', [ Pendings::class, 'create' ])->name('pending.create');
+    Route::get('/pending_approve/{claimId}', [ Pendings::class, 'approve' ])->name('pending.approve');
+    Route::get('/pending_reject/{claimId}', [ Pendings::class, 'reject' ])->name('pending.reject');
 
     // Various
     Route::get('/edit_team_boss/{userId}', [ Teams::class, 'setTeamBoss'] )->name( 'edit_team_boss' );

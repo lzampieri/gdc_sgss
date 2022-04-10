@@ -118,7 +118,7 @@
             </tr>
         </thead>
         <tbody>
-        @foreach ( App\Models\Event::with( [ 'theactor', 'thetarget'] )->latest()->get() as $item )
+        @forelse ( App\Models\Event::with( [ 'theactor', 'thetarget'] )->latest()->get() as $item )
             <tr>
                 
                 <td>{{ $item->created_at }}</td>
@@ -139,7 +139,43 @@
                     <a class="ib fa-solid fa-trash tooltiper" href="{{ route('event.trash', [ 'id' => $item->id ] ) }}"><div class="tooltip">Elimina</div></a>
                 </td>
             </tr>
-        @endforeach
+        @empty 
+            Nessun evento registrato
+        @endforelse
+        </tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Eventi in attesa</h2>
+        <table class="table-auto">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Agente</th>
+                <th>Subente</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @forelse ( App\Models\PendingKill::with( [ 'theactor', 'thetarget'] )->latest()->get() as $item )
+            <tr>
+                
+                <td>{{ $item->created_at }}</td>
+                <td>
+                    {{ $item->theactor ? $item->theactor->name : '<span class="text-red">Ignoto</span>' }}
+                </td>
+                <td>
+                    {{ $item->thetarget ? $item->thetarget->name : '<span class="text-red">Ignoto</span>' }}
+                </td>
+                <td>
+                    <a class="ib fa-solid fa-check tooltiper" href="{{ route('pending.approve', [ 'claimId' => $item->id ] ) }}"><div class="tooltip">Conferma</div></a>
+                    <a class="ib fa-solid fa-trash tooltiper" href="{{ route('pending.reject', [ 'claimId' => $item->id ] ) }}"><div class="tooltip">Elimina</div></a>
+                </td>
+            </tr>
+        @empty
+            Nessun evento in attesa
+        @endforelse
         </tbody>
         </table>
     </div>

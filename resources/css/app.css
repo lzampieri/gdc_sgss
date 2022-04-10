@@ -48,6 +48,10 @@
         @apply hover:bg-bgblack hover:text-white hover:cursor-pointer;
     }
 
+    .ib-disabled {
+        @apply p-2 no-underline;
+    }
+
     .button-large {
         @apply button;
         @apply p-4 m-4;

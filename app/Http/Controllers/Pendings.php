@@ -28,7 +28,7 @@ class Pendings extends Controller
 
     public static function approve( $claimId ) {
         $pendingKill = PendingKill::find( $claimId );
-        if( $pendingKill->actor != Auth::user()->id ) {
+        if( ( $pendingKill->actor != Auth::user()->id ) && !( Auth::user()->isadmin ) ) {
             return back()->with( 'negative-message', 'Errore: non hai il permesso di confermare questa uccisione.');
         }
 
@@ -45,7 +45,7 @@ class Pendings extends Controller
     
     public static function reject( $claimId ) {
         $pendingKill = PendingKill::find( $claimId );
-        if( ($pendingKill->actor != Auth::user()->id) && ($pendingKill->target != Auth::user()->id) ) {
+        if( ($pendingKill->actor != Auth::user()->id) && ($pendingKill->target != Auth::user()->id) && !( Auth::user()->isadmin ) ) {
             return back()->with( 'negative-message', 'Errore: non hai il permesso di annullare questa uccisione.');
         }
         
