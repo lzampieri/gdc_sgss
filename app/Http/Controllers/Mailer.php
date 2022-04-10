@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PendingKill;
 
@@ -49,4 +50,20 @@ class Mailer extends Controller
             env( 'MAIL_HEADERS' )
         );
     }
+
+    public static function pending_approved( Event $event ) {
+        $target_name = $event->thetarget->name;
+        $actor_name = $event->theactor->name;
+
+        mail(
+            env( 'MAIL_LIST' ),
+            'Notifica di morte',
+            <<<TXT
+                Con la presente a notificare la morte di $target_name a mano di $actor_name.
+                L'amministrazione.
+            TXT,
+            env( 'MAIL_HEADERS' )
+        );
+    }
 }
+

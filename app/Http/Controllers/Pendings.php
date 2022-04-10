@@ -32,11 +32,13 @@ class Pendings extends Controller
             return back()->with( 'negative-message', 'Errore: non hai il permesso di confermare questa uccisione.');
         }
 
-        Event::create([
+        $event = Event::create([
             'actor' => $pendingKill->actor,
             'target' => $pendingKill->target,
             'finalstate' => False
         ]);
+
+        Mailer::pending_approved( $event );
         
         $pendingKill->delete();
         
