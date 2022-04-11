@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\PendingKill;
+use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,7 +39,8 @@ class Pendings extends Controller
         $event = Event::create([
             'actor' => $pendingKill->actor,
             'target' => $pendingKill->target,
-            'finalstate' => False
+            'finalstate' => False,
+            'created_at' => $pendingKill->created_at
         ]);
 
         Mailer::event_created( $event );

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Pendings;
+use App\Http\Controllers\Settings;
 use App\Http\Controllers\Teams;
 use Illuminate\Support\Facades\Route;
 
@@ -18,10 +19,14 @@ use Illuminate\Support\Facades\Route;
 // Homepage
 Route::get('/', function () { return view('home');  })->name('home');
 
-// Pagine pubbliche di servizio
+// Pagine pubbliche
 Route::get('/albo-doro', function () { return view('albo-doro'); })->middleware('auth')->name( 'albo-doro' );
 Route::get('/regolamento', function () { return redirect( asset( 'files/regolamento.pdf') ); })->name( 'regolamento' );
 Route::get('/terms', function () { return view('terms'); })->name( 'terms' );
+
+// Pagine di servizio
+Route::get('/ensure_settings', [ Settings::class, 'ensure' ] );
+Route::get('/migrate', [ Settings::class, 'migrate' ] );
 
 // Solo utenti registrati    
 Route::middleware( ['auth'] )->group( function () {

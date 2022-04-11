@@ -5,15 +5,12 @@ use App\Http\Controllers\Events;
 use App\Http\Controllers\Settings;
 use App\Http\Controllers\Teams;
 use App\Http\Controllers\Users;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Artisan;
 
 Route::middleware( ['auth.admin'] )->group( function () {
 
     // Manage the database
-    Route::get('/migrate', function () { return Artisan::call('migrate'); });
     Route::get('/option/{key}/{value}', [ Settings::class, 'updoption' ] )->name('option.update');
 
 
@@ -29,7 +26,6 @@ Route::middleware( ['auth.admin'] )->group( function () {
     Route::post('/admin/cycles/single', function (Request $request) { return redirect( route('option.update', [ 'key' => 'single_cycle', 'value' => $request->input('cycle') ] ) ); });
     Route::get('/admin/cycles/teams', function () { return view('admin.cycles.teams'); })->name('admin.cycles.teams');
     Route::post('/admin/cycles/teams', function (Request $request) { return redirect( route('option.update', [ 'key' => 'teams_cycle', 'value' => $request->input('cycle') ] ) ); });
-
 
     // Users admin
     Route::get('/user/admin/{id}', [ Users::class, 'makeadmin' ] )->name('user.admin');

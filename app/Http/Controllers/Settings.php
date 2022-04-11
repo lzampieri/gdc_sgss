@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Setting;
+use Illuminate\Support\Facades\Artisan;
 
 class Settings extends Controller
 {
@@ -15,7 +16,8 @@ class Settings extends Controller
             'dict' => [
                 '0' => 'Chiuse',
                 '1' => 'Aperte'
-            ]
+            ],
+            'default' => '0'
         ],
         [
             'name' => 'team_visible',
@@ -23,7 +25,8 @@ class Settings extends Controller
             'dict' => [
                 '0' => 'Nascosta',
                 '1' => 'Visible'
-            ]
+            ],
+            'default' => '0'
         ],
         [
             'name' => 'edit_team_boss',
@@ -31,7 +34,8 @@ class Settings extends Controller
             'dict' => [
                 '0' => 'Bloccato',
                 '1' => 'Permesso'
-            ]
+            ],
+            'default' => '0'
         ],
         [
             'name' => 'method',
@@ -41,16 +45,28 @@ class Settings extends Controller
                 'single_single' => 'Singolo ciclo, singolo obiettivo',
                 'single_double' => 'Singolo ciclo, obiettivo seguente e successivo',
                 'teams_single_single' => 'Singolo ciclo, singola squadra come obiettivo, squadre'
-            ]
+            ],
+            'default' => 'disabled'
         ],
+        [
+            'name' => 'jesus_boss',
+            'title' => 'Caposquadra con poteri apotropaici',
+            'dict' => [
+                'disabled' => 'Disabilitato',
+                'on_everyone' => 'Su uccisione, entro 24h, di un qualsiasi obiettivo',
+            ],
+            'default' => 'disabled'
+        ]
     ];
 
     const reserved = [
         [
-            'name' => 'single_cycle'
+            'name' => 'single_cycle',
+            'default' => '[]'
         ],
         [
-            'name' => 'teams_cycle'
+            'name' => 'teams_cycle',
+            'default' => '[]'
         ]
         ];
 
@@ -75,5 +91,20 @@ class Settings extends Controller
     public function updoption( $key, $value ) {
         Setting::updateOrCreate( [ 'key' => $key ], [ 'value' => $value ] );
         return back();
+    }
+
+    public static function ensure() {
+        foreach ( Settings::editable as $s ) {
+            Setting::firstOrCreate( [ 'key' => $s['name'] ], [ 'value' => $s['default'] ] );
+        }
+        foreach ( Settings::reserved as $s ) {
+            Setting::firstOrCreate( [ 'key' => $s['name'] ], [ 'value' => $s['default'] ] );
+        }
+        return redirect()->route('home')->with('positive-message','Fatto');
+    }
+
+    public static function migrate() {
+        Artisan::call('migrate');
+        return redirect()->route('home')->with('positive-message','Fatto');
     }
 }

@@ -17,6 +17,7 @@ class Event extends Model
         'actor',
         'target',
         'finalstate',
+        'created_at'
     ];
 
     protected $cast = [
