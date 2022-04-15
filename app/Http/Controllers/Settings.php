@@ -20,6 +20,15 @@ class Settings extends Controller
             'default' => '0'
         ],
         [
+            'name' => 'kills_enabled',
+            'title' => 'Uccisioni',
+            'dict' => [
+                '0' => 'Chiuse',
+                '1' => 'Aperte'
+            ],
+            'default' => '0'
+        ],
+        [
             'name' => 'team_visible',
             'title' => 'Propria squadra',
             'dict' => [

@@ -13,6 +13,7 @@ use phpDocumentor\Reflection\Types\Boolean;
 class Admins extends Controller
 {
     public static function add_event( Request $request ) {
+        
         $validated = $request->validate([
             'actor' => 'required|exists:users,id',
             'target' => 'required|exists:users,id',

@@ -12,6 +12,9 @@ use phpDocumentor\Reflection\PseudoTypes\False_;
 class Pendings extends Controller
 {
     public static function create( $userId ) {
+        if(( Settings::obtain( 'kills_enabled' ) == 0 ) )
+            return back()->with( 'negative-message', 'Errore: in questo momento non è permesso uccidere.');
+
         $target = User::find( $userId );
         if( $target == null ) {
             return back()->with( 'negative-message', 'Errore: obiettivo non trovato.');
