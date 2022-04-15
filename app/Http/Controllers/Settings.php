@@ -53,7 +53,9 @@ class Settings extends Controller
             'title' => 'Caposquadra con poteri apotropaici',
             'dict' => [
                 'disabled' => 'Disabilitato',
-                'on_everyone' => 'Su uccisione, entro 24h, di un qualsiasi obiettivo',
+                '24' => 'Su uccisione, entro 24h, di un qualsiasi obiettivo',
+                '36' => 'Su uccisione, entro 36h, di un qualsiasi obiettivo',
+                '48' => 'Su uccisione, entro 48h, di un qualsiasi obiettivo',
             ],
             'default' => 'disabled'
         ]

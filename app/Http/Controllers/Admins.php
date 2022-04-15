@@ -26,6 +26,13 @@ class Admins extends Controller
 
         Mailer::event_created( $event );
 
+        if( $validated['finalState'] == false ) {
+            $resuscitation = Pendings::resuscitate( $event );
+            
+            if( $resuscitation )
+                return $resuscitation;
+        }
+
         return back()->with( 'positive-message', 'Evento creato.');
     }
 

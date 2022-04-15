@@ -54,10 +54,12 @@ class Mailer extends Controller
     public static function event_created( Event $event ) {
         $target_name = $event->thetarget->name;
         $actor_name = $event->theactor->name;
-        $type = $event->finalState ? "resurrezione" : "morte";
+        $target_email = $event->thetarget->email;
+        $actor_email = $event->theactor->email;
+        $type = $event->finalstate ? "resurrezione" : "morte";
 
         mail(
-            env( 'MAIL_LIST' ),
+            $target_email . ', ' . $actor_email . ', ' . env( 'MAIL_LIST' ),
             'Notifica di ' . $type,
             <<<TXT
                 Con la presente a notificare la $type di $target_name a mano di $actor_name.

@@ -46,6 +46,14 @@ class User extends Authenticatable
             return (bool) $last_event[0]->finalstate;
         return True;
     }
+
+    public function death_time() {
+        $last_event = $this->events_suffered()->latest()->get();
+        if( $last_event[0]->finalstate )
+            return null;
+        else
+            return $last_event[0]->created_at;
+    }
     
     public function pendings_done() {
         return $this->hasMany( PendingKill::class, 'actor' );
