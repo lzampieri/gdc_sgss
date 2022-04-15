@@ -13,7 +13,7 @@ use PhpParser\Node\Stmt\Static_;
 class Targets extends Controller
 {
 
-    public function targets( ) {
+    public static function targets( ) {
         $method = Settings::obtain( 'method' );
         
         // Single cycle with single target

@@ -99,7 +99,7 @@ class Settings extends Controller
         return Settings::$thedata;
     }
 
-    public function updoption( $key, $value ) {
+    public static function updoption( $key, $value ) {
         Setting::updateOrCreate( [ 'key' => $key ], [ 'value' => $value ] );
         return back();
     }
