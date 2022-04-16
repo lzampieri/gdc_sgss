@@ -178,4 +178,5 @@
     <x-admin.add_pending />
 
     <a href="{{ route( 'admin.deleted' ) }}">Eventi eliminati</a>
+    <a href="{{ route( 'admin.logs' ) }}">Logs</a>
 </x-layouts.main>

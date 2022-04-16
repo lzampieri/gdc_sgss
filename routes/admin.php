@@ -39,5 +39,5 @@ Route::middleware( ['auth.admin'] )->group( function () {
     
 
     // View the log
-    Route::get('/admin/logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
+    Route::get('/admin/logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->name('admin.logs');
 });

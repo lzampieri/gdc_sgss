@@ -17,6 +17,7 @@
 
     {{-- Javascript --}}
     <script type="text/javascript" src="{{ asset(mix('js/app.js')) }}"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
 
     {{-- Favicon --}}
     <link rel="icon" href="{{ asset('images/favicon.png') }}">

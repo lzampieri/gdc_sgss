@@ -45,4 +45,6 @@
             Logout
         </a>    
     @endauth
+
+    <a href="{{ route('about') }}">About</a>
 </x-layouts.main>
