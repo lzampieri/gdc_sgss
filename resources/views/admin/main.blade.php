@@ -40,11 +40,6 @@
                     {{ $item->created_at }}
                 </td>
                 <td>
-                    @if ( $item->is_alive )
-                        <a class="ib fa-solid fa-skull tooltiper" href="{{ route('user.kill', [ 'id' => $item->id ] ) }}"><div class="tooltip">Uccidi</div></a>
-                    @else 
-                        <a class="ib fa-solid fa-cross tooltiper" href="{{ route('user.dekill', [ 'id' => $item->id ] ) }}"><div class="tooltip">Risorgi</div></a>
-                    @endif
                     <a class="ib fa-solid fa-trash tooltiper" href="{{ route('user.trash', [ 'id' => $item->id ] ) }}"><div class="tooltip">Elimina</div></a>
                     <a class="ib fa-solid fa-toolbox tooltiper" href="{{ route('user.admin', [ 'id' => $item->id ] ) }}"><div class="tooltip">Promuovi</div></a>
                 </td>

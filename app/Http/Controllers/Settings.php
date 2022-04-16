@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Logging\Logger;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Log;
 
 class Settings extends Controller
 {
@@ -100,7 +102,8 @@ class Settings extends Controller
     }
 
     public static function updoption( $key, $value ) {
-        Setting::updateOrCreate( [ 'key' => $key ], [ 'value' => $value ] );
+        $setting = Setting::updateOrCreate( [ 'key' => $key ], [ 'value' => $value ] );
+        Log::info("Settings updated", Logger::logParams(['setting' => $setting] ) );
         return back();
     }
 

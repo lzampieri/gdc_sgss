@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Logging\Logger;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Mailer;
 use App\Models\Event;
 use App\Models\PendingKill;
+use Illuminate\Support\Facades\Log;
 use phpDocumentor\Reflection\Types\Boolean;
 
 class Admins extends Controller
@@ -34,6 +36,8 @@ class Admins extends Controller
                 return $resuscitation;
         }
 
+        Log::info("Created event", Logger::logParams(['event' => $event] ) );
+
         return back()->with( 'positive-message', 'Evento creato.');
     }
 
@@ -48,6 +52,8 @@ class Admins extends Controller
         ]);
 
         Mailer::pending_create( $pending );
+
+        Log::info("Created pending event", Logger::logParams(['pending_event' => $pending] ) );
 
         return back()->with( 'positive-message', 'Evento supposto creato, mail inviata.');
     }

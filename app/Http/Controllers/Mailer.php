@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Logging\Logger;
 use App\Models\Event;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PendingKill;
+use Illuminate\Support\Facades\Log;
 
 class Mailer extends Controller
 {
 
     public static function welcome_mail( ) {
         $uname = Auth::user()->name;
+        $mail = Auth::user()->email;
         mail(
-            Auth::user()->email,
+            $mail,
             'Sei nel gioco',
             <<<TXT
                 Ciao $uname!
@@ -26,6 +29,7 @@ class Mailer extends Controller
             TXT,
             env( 'MAIL_HEADERS' )
         );
+        Log::info("Send welcome mail", Logger::logParams(['to' => $mail] ) );
     }
 
     public static function pending_create( PendingKill $pending ) {
@@ -49,6 +53,7 @@ class Mailer extends Controller
             TXT,
             env( 'MAIL_HEADERS' )
         );
+        Log::info("Send pending event mail", Logger::logParams(['to' => $pending->thetarget->email] ) );
     }
 
     public static function event_created( Event $event ) {
@@ -57,9 +62,10 @@ class Mailer extends Controller
         $target_email = $event->thetarget->email;
         $actor_email = $event->theactor->email;
         $type = $event->finalstate ? "resurrezione" : "morte";
+        $mail = $target_email . ', ' . $actor_email . ', ' . env( 'MAIL_LIST' );
 
         mail(
-            $target_email . ', ' . $actor_email . ', ' . env( 'MAIL_LIST' ),
+            $mail,
             'Notifica di ' . $type,
             <<<TXT
                 Con la presente a notificare la $type di $target_name a mano di $actor_name.
@@ -67,6 +73,7 @@ class Mailer extends Controller
             TXT,
             env( 'MAIL_HEADERS' )
         );
+        Log::info("Send event created mail", Logger::logParams(['to' => $mail] ) );
     }
 }
 

@@ -32,11 +32,12 @@ Route::middleware( ['auth.admin'] )->group( function () {
     Route::get('/user/deadmin/{id}', [ Users::class, 'deadmin' ] )->name('user.deadmin');
     Route::get('/user/trash/{id}', [ Users::class, 'maketrash' ] )->name('user.trash');
     Route::get('/user/detrash/{id}', [ Users::class, 'detrash' ] )->name('user.detrash');
-    Route::get('/user/kill/{id}', [ Users::class, 'makekill' ] )->name('user.kill');
-    Route::get('/user/dekill/{id}', [ Users::class, 'dekill' ] )->name('user.dekill');
 
     // Events admin
     Route::get('/event/trash/{id}', [ Events::class, 'maketrash' ] )->name('event.trash');
     Route::get('/event/detrash/{id}', [ Events::class, 'detrash' ] )->name('event.detrash');
     
+
+    // View the log
+    Route::get('/admin/logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
 });

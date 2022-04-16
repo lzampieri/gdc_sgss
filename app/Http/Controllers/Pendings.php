@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Logging\Logger;
 use App\Models\Event;
 use App\Models\PendingKill;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use phpDocumentor\Reflection\PseudoTypes\False_;
 
 class Pendings extends Controller
@@ -28,6 +30,8 @@ class Pendings extends Controller
 
         Mailer::pending_create( $pendingKill );
         
+        Log::info("Created pending event", Logger::logParams(['pending_event' => $pendingKill] ) );
+
         return back()->with( 'positive-message', 'Una mail è stata inviata alla presunta vittima. Attendi che confermi di essere stata davvero uccisa.');
     }
 
@@ -48,6 +52,8 @@ class Pendings extends Controller
         ]);
 
         Mailer::event_created( $event );
+
+        Log::info("Created event from pending approvation", Logger::logParams(['event' => $event] ) );
         
         $pendingKill->delete();
 
@@ -101,6 +107,8 @@ class Pendings extends Controller
         ]);
 
         Mailer::event_created( $event );
+
+        Log::info("Created event from automatic resurrection", Logger::logParams(['event' => $event] ) );
         
         return back()->with( 'positive-message', 'Omicidio confermato. Questo omicidio ha portato alla resurrezione di ' . $papables[0]->name );
     }
@@ -115,6 +123,8 @@ class Pendings extends Controller
         }
         
         $pendingKill->delete();
+
+        Log::info("Pending kill rejected", Logger::logParams(['pending_event' => $pendingKill] ) );
         
         return back()->with( 'positive-message', 'Omicidio annullato.');
     }
