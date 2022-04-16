@@ -23,6 +23,7 @@ Route::get('/', function () { return view('home');  })->name('home');
 Route::get('/albo-doro', function () { return view('albo-doro'); })->middleware('auth')->name( 'albo-doro' );
 Route::get('/regolamento', function () { return redirect( asset( 'files/regolamento.pdf') ); })->name( 'regolamento' );
 Route::get('/terms', function () { return view('terms'); })->name( 'terms' );
+Route::get('/about', function () { return view('about'); })->name( 'about' );
 
 // Pagine di servizio
 Route::get('/ensure_settings', [ Settings::class, 'ensure' ] );

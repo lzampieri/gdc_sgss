@@ -46,5 +46,5 @@
         </a>    
     @endauth
 
-    <a href="{{ route('about') }}">About</a>
+    {{-- <a href="{{ route('about') }}">About</a> --}}
 </x-layouts.main>

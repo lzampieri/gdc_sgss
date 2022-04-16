@@ -49,6 +49,8 @@ class User extends Authenticatable
 
     public function death_time() {
         $last_event = $this->events_suffered()->latest()->get();
+        if( $last_event->count() == 0 )
+            return null;
         if( $last_event[0]->finalstate )
             return null;
         else

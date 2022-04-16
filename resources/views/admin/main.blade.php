@@ -5,6 +5,7 @@
         <a class="button" href="{{ route('admin.option') }}">Opzioni di gioco</a>
         <a class="button" href="{{ route('admin.teams') }}">Squadre</a>
         <a class="button" href="{{ route('admin.cycles.single') }}">Ciclo singoli</a>
+        <a class="button" href="{{ route('admin.exports') }}">Export</a>
     </div>
 
     <div class="card">
@@ -118,10 +119,10 @@
                 
                 <td>{{ $item->created_at }}</td>
                 <td>
-                    {{ $item->theactor ? $item->theactor->name : '<span class="text-red">Ignoto</span>' }}
+                    {!! $item->theactor ? $item->theactor->name : "<span class=\"text-red\">Ignoto</span>" !!}
                 </td>
                 <td>
-                    {{ $item->thetarget ? $item->thetarget->name : '<span class="text-red">Ignoto</span>' }}
+                    {!! $item->thetarget ? $item->thetarget->name : "<span class=\"text-red\">Ignoto</span>" !!}
                 </td>
                 <td>
                     @if ( $item->finalstate )
@@ -159,10 +160,10 @@
                 
                 <td>{{ $item->created_at }}</td>
                 <td>
-                    {{ $item->theactor ? $item->theactor->name : '<span class="text-red">Ignoto</span>' }}
+                    {!! $item->theactor ? $item->theactor->name : "<span class=\"text-red\">Ignoto</span>" !!}
                 </td>
                 <td>
-                    {{ $item->thetarget ? $item->thetarget->name : '<span class="text-red">Ignoto</span>' }}
+                    {!! $item->thetarget ? $item->thetarget->name : "<span class=\"text-red\">Ignoto</span>" !!}
                 </td>
                 <td>
                     <a class="ib fa-solid fa-check tooltiper" href="{{ route('pending.approve', [ 'claimId' => $item->id ] ) }}"><div class="tooltip">Conferma</div></a>

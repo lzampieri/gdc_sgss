@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\ExportsController;
 use App\Http\Controllers\Admins;
 use App\Http\Controllers\Events;
 use App\Http\Controllers\Settings;
@@ -26,6 +27,8 @@ Route::middleware( ['auth.admin'] )->group( function () {
     Route::post('/admin/cycles/single', function (Request $request) { return redirect( route('option.update', [ 'key' => 'single_cycle', 'value' => $request->input('cycle') ] ) ); });
     Route::get('/admin/cycles/teams', function () { return view('admin.cycles.teams'); })->name('admin.cycles.teams');
     Route::post('/admin/cycles/teams', function (Request $request) { return redirect( route('option.update', [ 'key' => 'teams_cycle', 'value' => $request->input('cycle') ] ) ); });
+    Route::get('/admin/exports', function () { return view('admin.exports'); })->name('admin.exports');
+    Route::get('/admin/export/{table}/{type}', [ ExportsController::class, 'export' ] )->name('admin.export');
 
     // Users admin
     Route::get('/user/admin/{id}', [ Users::class, 'makeadmin' ] )->name('user.admin');
