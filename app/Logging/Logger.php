@@ -18,7 +18,7 @@ class Logger {
         }
         if( isset( $params['pending_event'] ) ) {
             $pending = $params['pending_event'];
-            $params['pending_event'] = 'Presunta morte di ' . $pending->thetarget->name . ' a mano di ' . $pending->theactor->name . Logger::parseDates($target);
+            $params['pending_event'] = 'Presunta morte di ' . $pending->thetarget->name . ' a mano di ' . $pending->theactor->name . Logger::parseDates($pending);
         }
         if( isset( $params['setting'] ) ) {
             $setting = $params['setting'];
