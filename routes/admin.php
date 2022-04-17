@@ -21,6 +21,7 @@ Route::middleware( ['auth.admin'] )->group( function () {
     Route::post('/admin/add_pending', [ Admins::class, 'add_pending' ] )->name('admin.add.pending');
     Route::get('/admin/deleted', function () { return view('admin.deleted'); })->name('admin.deleted');
     Route::get('/admin/option', function () { return view('admin.options'); })->name('admin.option');
+    Route::post('/admin/option', [ Admins::class, 'set_communication'] );
     Route::get('/admin/teams', function () { return view('admin.teams'); })->name('admin.teams');
     Route::post('/admin/teams', [ Teams::class, 'saveAndCreateAndTB'] );
     Route::get('/admin/cycles/single', function () { return view('admin.cycles.single'); })->name('admin.cycles.single');

@@ -1,4 +1,6 @@
 <x-layouts.main>
+    <x-items.communications />
+
     @auth
         <div class="card">
             Benvenuto {{ Auth::user()->name }}. <br />
@@ -34,17 +36,19 @@
         <x-items.login_button />
     @endguest
 
-    <a class="text-center button" href="{{ route( 'regolamento' ) }}">
-        Regolamento
-    </a>
-    <a class="text-center button" href="{{ route( 'albo-doro' ) }}">
-        Albo d'oro
-    </a>
-    @auth
-        <a class="text-center button" href="{{ route( 'signoff' ) }}">
-            Logout
-        </a>    
-    @endauth
+    <div class="flex flex-row flex-wrap items-center justify-center">
+        <a class="text-center button" href="{{ route( 'regolamento' ) }}">
+            Regolamento
+        </a>
+        <a class="text-center button" href="{{ route( 'albo-doro' ) }}">
+            Albo d'oro
+        </a>
+        @auth
+            <a class="text-center button" href="{{ route( 'signoff' ) }}">
+                Logout
+            </a>    
+        @endauth
+    </div>
 
     {{-- <a href="{{ route('about') }}">About</a> --}}
 </x-layouts.main>

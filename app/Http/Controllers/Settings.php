@@ -80,6 +80,14 @@ class Settings extends Controller
         [
             'name' => 'teams_cycle',
             'default' => '[]'
+        ],
+        [
+            'name' => 'communication',
+            'default' => ''
+        ],
+        [
+            'name' => 'communication_private',
+            'default' => ''
         ]
         ];
 

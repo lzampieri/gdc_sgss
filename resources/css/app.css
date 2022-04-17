@@ -63,6 +63,9 @@
     .happy-news {
         @apply border-2 border-green rounded-full p-4 m-4;
     }
+    .comm {
+        @apply border-2 border-main rounded-3xl p-4 m-4 text-center;
+    }
 
     .tooltip {
         @apply invisible absolute bg-bg text-main capitalize m-2;

@@ -57,4 +57,18 @@ class Admins extends Controller
 
         return back()->with( 'positive-message', 'Evento supposto creato, mail inviata.');
     }
+
+    public static function set_communication( Request $request ) {
+        if( $request->has('communication')) {
+            $comm = $request->input( 'communication', '' );
+            Settings::updoption( 'communication', $comm );
+            Log::info("Updated communication", Logger::logParams(['text' => $comm ] ) );
+        }
+        if( $request->has('communication_priv') ) {
+            $comm = $request->input( 'communication_priv', '' );
+            Settings::updoption( 'communication_private', $comm );
+            Log::info("Updated communication private", Logger::logParams(['text' => $comm ] ) );
+        }
+        return back()->with( 'positive-message', 'Aggiornato' );
+    }
 }
