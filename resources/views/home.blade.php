@@ -46,9 +46,9 @@
         @auth
             <a class="text-center button" href="{{ route( 'signoff' ) }}">
                 Logout
-            </a>    
+            </a>
         @endauth
     </div>
 
-    {{-- <a href="{{ route('about') }}">About</a> --}}
+    {{-- <a href="{{ route('about') }}">Informazioni</a> --}}
 </x-layouts.main>

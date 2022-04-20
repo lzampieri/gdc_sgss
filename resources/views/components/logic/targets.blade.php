@@ -24,27 +24,27 @@
                 @if ( $item->is_pending )
                     <i class="ib-disabled fa-solid fa-hourglass"></i>
                 @else
-                    <a class="ib fa-solid fa-spoon" href="{{ route('pending.create', [ 'userId' => $item->id ] ) }}"></a>
+                    <a class="ib fa-solid fa-spoon text-3xl" href="{{ route('pending.create', [ 'userId' => $item->id ] ) }}"></a>
                 @endif
             </span>
         @endforeach
     </div>
 
-@elseif ( $targets[0] instanceof App\Models\Team )
+@elseif ( $targets[0] instanceof App\Models\Team ) 
 
     @foreach ($targets as $team)
         <div class="card mx-8 flex flex-col items-center">
             <h2>Squadra avversaria</h2>
             @forelse ( $team->usersAlive() as $u )
                 <div>
-                    @if ( $u->is_team_boss )
+                    @if ( ( $u->is_team_boss ) && ( App\Http\Controllers\Settings::obtain( 'show_rival_boss' ) == 1 ) )
                         <i class="fa-solid fa-hat-wizard"></i>
                     @endif
                     {{ $u->name }}
                     @if ( $u->is_pending )
                         <i class="ib-disabled fa-solid fa-hourglass"></i>
                     @else
-                        <a class="ib fa-solid fa-spoon" href="{{ route('pending.create', [ 'userId' => $u->id ] ) }}"></a>
+                        <a class="ib fa-solid fa-spoon text-3xl" href="{{ route('pending.create', [ 'userId' => $u->id ] ) }}"></a>
                     @endif
                 </div>
             @empty

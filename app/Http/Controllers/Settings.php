@@ -40,6 +40,15 @@ class Settings extends Controller
             'default' => '0'
         ],
         [
+            'name' => 'show_rival_boss',
+            'title' => 'Caposquadra degli avversari',
+            'dict' => [
+                '0' => 'Nascosto',
+                '1' => 'Visible'
+            ],
+            'default' => '0'
+        ],
+        [
             'name' => 'edit_team_boss',
             'title' => 'Cambio capo squadra',
             'dict' => [
