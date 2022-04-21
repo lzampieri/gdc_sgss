@@ -91,9 +91,9 @@ class Pendings extends Controller
             }
         );
 
-        if( count( $papables ) < 1 )
+        if( $papables->count() < 1 )
             return false;
-        
+
         $papables->sort( function ($a, $b) { 
             if( $a->death_time()->lt( $b->death_time() ) ) return -1;
             else return 1;
@@ -101,16 +101,16 @@ class Pendings extends Controller
 
         $event = Event::create([
             'actor' => $event->actor,
-            'target' => $papables[0]->id,
+            'target' => $papables->first()->id,
             'finalstate' => True,
             'created_at' => $event->updated_at
         ]);
 
         Mailer::event_created( $event );
-
+        
         Log::info("Created event from automatic resurrection", Logger::logParams(['event' => $event] ) );
         
-        return back()->with( 'positive-message', 'Omicidio confermato. Questo omicidio ha portato alla resurrezione di ' . $papables[0]->name );
+        return back()->with( 'positive-message', 'Omicidio confermato. Questo omicidio ha portato alla resurrezione di ' . $papables->first()->name );
     }
     
     public static function reject( $claimId ) {
