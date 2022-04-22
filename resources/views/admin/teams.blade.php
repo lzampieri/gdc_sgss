@@ -9,7 +9,7 @@
         <a class="button" href="{{ route('admin.cycles.teams') }}">Ciclo</a>
     </div>
     <span>Trascina gli elementi per spostarli di squadra.</span>
-    <div class="w-full grid grid-cols-4 grid-flow-row-dense">
+    <div class="w-full grid grid-cols-1 md:grid-cols-4 grid-flow-row-dense">
         <div class="card flex flex-col items-center">
             <h2>Giocatori fuori dalle squadre</h2>
             <div class="flex flex-col items-center team min-h-[50px] w-full" data-id="{{ -1 }}">

@@ -17,7 +17,7 @@ class CreateSettingsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('key')->unique();
-            $table->string('value')->nullable();
+            $table->text('value')->nullable();
         });
     }
 
