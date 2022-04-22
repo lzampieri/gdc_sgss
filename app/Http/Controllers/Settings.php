@@ -135,7 +135,8 @@ class Settings extends Controller
     }
 
     public static function migrate() {
-        Artisan::call('migrate');
+        Artisan::call('migrate', [ '--force' => true ] );
+        Settings::ensure();
         return redirect()->route('home')->with('positive-message','Fatto');
     }
 }
