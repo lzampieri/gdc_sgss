@@ -2,6 +2,7 @@
 
 use App\Exports\ExportsController;
 use App\Http\Controllers\Admins;
+use App\Http\Controllers\CronJobs;
 use App\Http\Controllers\Events;
 use App\Http\Controllers\Settings;
 use App\Http\Controllers\Teams;
@@ -30,6 +31,11 @@ Route::middleware( ['auth.admin'] )->group( function () {
     Route::post('/admin/cycles/teams', function (Request $request) { return redirect( route('option.update', [ 'key' => 'teams_cycle', 'value' => $request->input('cycle') ] ) ); });
     Route::get('/admin/exports', function () { return view('admin.exports'); })->name('admin.exports');
     Route::get('/admin/export/{table}/{type}', [ ExportsController::class, 'export' ] )->name('admin.export');
+    Route::get('/admin/tasks', function () { return view('admin.tasks'); })->name('admin.tasks');
+    Route::post('/admin/cronjob/add', [ CronJobs::class, 'addPasscode' ])->name('admin.cronjob.add');
+    Route::get('/admin/cronjob/delete/{id}', [ CronJobs::class, 'deletePasscode' ])->name('admin.cronjob.delete');
+    Route::post('/admin/task/add/{type}', [ CronJobs::class, 'addTask' ])->name('admin.task.add');
+    Route::get('/admin/task/delete/{id}', [ CronJobs::class, 'deleteTask' ])->name('admin.task.delete');
 
     // Users admin
     Route::get('/user/admin/{id}', [ Users::class, 'makeadmin' ] )->name('user.admin');

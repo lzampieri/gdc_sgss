@@ -75,5 +75,21 @@ class Mailer extends Controller
         );
         Log::info("Send event created mail", Logger::logParams(['to' => $mail] ) );
     }
+
+    public static function cronjobs( $log ) {
+        $mail = env( 'MAIL_LIST' );
+
+        mail(
+            $mail,
+            'Lavori programmati',
+            <<<TXT
+                Sono stati svolti i seguenti lavori programmati:
+                $log
+                L'amministrazione.
+            TXT,
+            env( 'MAIL_HEADERS' )
+        );
+        Log::info("Send cronjob mail", Logger::logParams(['to' => $mail] ) );
+    }
 }
 

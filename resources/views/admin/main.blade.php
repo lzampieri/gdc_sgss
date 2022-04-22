@@ -5,7 +5,8 @@
         <a class="button" href="{{ route('admin.option') }}">Opzioni di gioco</a>
         <a class="button" href="{{ route('admin.teams') }}">Squadre</a>
         <a class="button" href="{{ route('admin.cycles.single') }}">Ciclo singoli</a>
-        <a class="button" href="{{ route('admin.exports') }}">Export</a>
+        <a class="button" href="{{ route('admin.tasks') }}">Compiti</a>
+        <a class="button" href="{{ route('admin.exports') }}">Esporta</a>
     </div>
 
     <div class="card">

@@ -20,7 +20,7 @@ class Event extends Model
         'created_at'
     ];
 
-    protected $cast = [
+    protected $casts = [
         'finalstate' => 'boolean'
     ];
 
