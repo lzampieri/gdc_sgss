@@ -24,7 +24,11 @@
                 @if ( $item->is_pending )
                     <i class="ib-disabled fa-solid fa-hourglass"></i>
                 @else
-                    <a class="ib fa-solid fa-spoon text-3xl" href="{{ route('pending.create', [ 'userId' => $item->id ] ) }}"></a>
+                    <x-items.modal_icon
+                        icon="ib fa-solid fa-spoon"
+                        url="{{ route('pending.create', [ 'userId' => $item->id ] ) }}"
+                        event="aver ucciso {{ $item->name }}">
+                    </x-items.modal_icon>
                 @endif
             </span>
         @endforeach
@@ -44,7 +48,11 @@
                     @if ( $u->is_pending )
                         <i class="ib-disabled fa-solid fa-hourglass"></i>
                     @else
-                        <a class="ib fa-solid fa-spoon text-3xl" href="{{ route('pending.create', [ 'userId' => $u->id ] ) }}"></a>
+                        <x-items.modal_icon
+                            icon="ib fa-solid fa-spoon"
+                            url="{{ route('pending.create', [ 'userId' => $u->id ] ) }}"
+                            event="aver ucciso {{ $u->name }}">
+                        </x-items.modal_icon>
                     @endif
                 </div>
             @empty
