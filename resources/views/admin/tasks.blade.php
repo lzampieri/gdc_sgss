@@ -1,5 +1,5 @@
 <x-layouts.main>
-    <a class="button" href="{{ route('admin.main') }}"><- Indietro</a>
+    <a class="button" href="{{ route('admin.main') }}">&lt- Indietro</a>
     
     @php
         $passcodes = App\Models\NightTaskPasscode::all();

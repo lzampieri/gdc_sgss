@@ -5,7 +5,7 @@
 
 <x-layouts.main>
     <div class="flex flex-row gap-4">
-        <a class="button" href="{{ route('admin.main') }}"><- Indietro</a>
+        <a class="button" href="{{ route('admin.main') }}">&lt- Indietro</a>
         <a class="button" href="{{ route('admin.cycles.teams') }}">Ciclo</a>
     </div>
     <span>Trascina gli elementi per spostarli di squadra.</span>

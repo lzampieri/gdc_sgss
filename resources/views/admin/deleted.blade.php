@@ -1,5 +1,5 @@
 <x-layouts.main>
-    <a class="button" href="{{ route('admin.main') }}"><- Indietro</a>
+    <a class="button" href="{{ route('admin.main') }}">&lt- Indietro</a>
     
     <h2>Giocatori eliminati</h2>
     <h3> {{ App\Models\User::onlyTrashed()->count() }} giocatori eliminati.</h3>

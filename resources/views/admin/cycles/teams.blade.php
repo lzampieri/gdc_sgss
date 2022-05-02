@@ -8,7 +8,7 @@
 @endphp
 
 <x-layouts.main>
-    <a class="button" href="{{ route('admin.teams') }}"><- Indietro</a>
+    <a class="button" href="{{ route('admin.teams') }}">&lt- Indietro</a>
 
     <h2>Ciclo squadre</h2>
     <span>Trascina gli elementi per ordinarli. Il ciclo ha condizioni al contorno periodiche.</span>

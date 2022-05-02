@@ -8,7 +8,7 @@
 @endphp
 
 <x-layouts.main>
-    <a class="button" href="{{ route('admin.main') }}"><- Indietro</a>
+    <a class="button" href="{{ route('admin.main') }}">&lt- Indietro</a>
 
     <h2>Ciclo singolo</h2>
     <span>Trascina gli elementi per ordinarli. Il ciclo ha condizioni al contorno periodiche.</span>

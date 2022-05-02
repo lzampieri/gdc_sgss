@@ -1,5 +1,5 @@
 <x-layouts.main>
-    <a class="button" href="{{ route('admin.main') }}"><- Indietro</a>
+    <a class="button" href="{{ route('admin.main') }}">&lt- Indietro</a>
     @foreach ( App\Http\Controllers\Settings::editable as $s )
         <x-items.update_setup
             :opt_name="$s['name']"

@@ -1,5 +1,5 @@
 <x-layouts.main>
-    <a class="button" href="{{ route('admin.main') }}"><- Indietro</a>
+    <a class="button" href="{{ route('admin.main') }}">&lt- Indietro</a>
     <div class="grid grid-cols-4">
         @foreach ( App\Exports\ExportsController::exportables as $key => $s )
             <div class="card flex flex-col items-center">

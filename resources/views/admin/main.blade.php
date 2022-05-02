@@ -5,6 +5,7 @@
         <a class="button" href="{{ route('admin.option') }}">Opzioni di gioco</a>
         <a class="button" href="{{ route('admin.teams') }}">Squadre</a>
         <a class="button" href="{{ route('admin.cycles.single') }}">Ciclo singoli</a>
+        <a class="button" href="{{ route('admin.charts') }}">Grafici</a>
         <a class="button" href="{{ route('admin.tasks') }}">Compiti</a>
         <a class="button" href="{{ route('admin.exports') }}">Esporta</a>
     </div>
@@ -24,7 +25,7 @@
             </tr>
         </thead>
         <tbody>
-        @foreach ( App\Models\User::where( 'isadmin', False )->get() as $item )
+        @foreach ( App\Models\User::where( 'isadmin', False )->orderBy('name')->get() as $item )
             <tr>
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->email }}</td>
