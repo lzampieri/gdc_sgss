@@ -952,9 +952,11 @@ h4 {
 .force-hidden {
         display: none !important;
     }
+
 .hover\:opacity-100:hover {
   opacity: 1;
 }
+
 @media (min-width: 768px) {
 
   .md\:w-3\/5 {

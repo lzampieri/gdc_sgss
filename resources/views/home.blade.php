@@ -50,5 +50,5 @@
         @endauth
     </div>
 
-    {{-- <a href="{{ route('about') }}">Informazioni</a> --}}
+    <a href="{{ route('about') }}">Informazioni</a>
 </x-layouts.main>
