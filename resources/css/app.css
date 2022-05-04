@@ -78,5 +78,13 @@
     .force-hidden {
         display: none !important;
     }
+
+    #kills_table tbody tr {
+        @apply text-center border-grey border-y-2 hover:bg-grey
+    }
+
+    #kills_table td {
+        @apply py-2
+    }
       
 }

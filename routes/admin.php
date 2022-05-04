@@ -36,7 +36,7 @@ Route::middleware( ['auth.admin'] )->group( function () {
     Route::get('/admin/cronjob/delete/{id}', [ CronJobs::class, 'deletePasscode' ])->name('admin.cronjob.delete');
     Route::post('/admin/task/add/{type}', [ CronJobs::class, 'addTask' ])->name('admin.task.add');
     Route::get('/admin/task/delete/{id}', [ CronJobs::class, 'deleteTask' ])->name('admin.task.delete');
-    Route::get('/admin/charts', function () { return view('admin.charts'); })->name('admin.charts');
+    Route::get('/admin/stats', function () { return view('admin.stats'); })->name('admin.stats');
 
     // Users admin
     Route::get('/user/admin/{id}', [ Users::class, 'makeadmin' ] )->name('user.admin');
