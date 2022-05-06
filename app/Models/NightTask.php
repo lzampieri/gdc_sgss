@@ -41,6 +41,17 @@ class NightTask extends Model
                 }
             }
         }
+        if( $this->action_type == 'shuffle_cycle' ) {
+            foreach( Settings::cycles as $s ) {
+                if( $this->action_params['cycle_name'] == $s['name'] ) {
+                    return "Shuffle del ciclo  " . $s['title'];
+                }
+            }
+        }
+        if( $this->action_type == 'add_event' ) {
+            $dict = [ -1 => 'Morte presunta', 0 => 'Morte', 1 => 'Resurrezione' ];
+            return $dict[ $this->action_params['finalState'] ] . " di " . User::find( $this->action_params['target'] )->name . " a mano di " . User::find( $this->action_params['actor'] )->name . ( $this->action_params['sendmail'] ? " con" : " senza" ) . " spedizione di mail e " . ( $this->action_params['resurrections'] ? "con" : "senza" ) . " eventuali resurrezioni.";
+        }
         else return "Sconosciuta";
     }
 

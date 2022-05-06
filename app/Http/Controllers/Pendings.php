@@ -65,7 +65,7 @@ class Pendings extends Controller
         return back()->with( 'positive-message', 'Omicidio confermato.');
     }
 
-    public static function resuscitate( $event ) {
+    public static function resuscitate( $event, $send_mail = True ) {
         $actor = $event->theactor;
         if( !( $actor->is_team_boss ) )
             return false;
@@ -106,7 +106,9 @@ class Pendings extends Controller
             'created_at' => $event->updated_at
         ]);
 
-        Mailer::event_created( $event );
+        if( $send_mail ) {
+            Mailer::event_created( $event );
+        }
         
         Log::info("Created event from automatic resurrection", Logger::logParams(['event' => $event] ) );
         

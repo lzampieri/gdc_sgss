@@ -81,15 +81,20 @@ class Settings extends Controller
         ]
     ];
 
-    const reserved = [
+    const cycles = [
         [
             'name' => 'single_cycle',
+            'title' => 'Ciclo singoli',
             'default' => '[]'
         ],
         [
             'name' => 'teams_cycle',
+            'title' => 'Ciclo squadre',
             'default' => '[]'
-        ],
+        ]
+    ];
+
+    const reserved = [
         [
             'name' => 'communication',
             'default' => ''
@@ -98,7 +103,7 @@ class Settings extends Controller
             'name' => 'communication_private',
             'default' => ''
         ]
-        ];
+    ];
 
     public static function load_static() {
         if( count( Settings::$thedata ) == 0 ) {
@@ -126,6 +131,9 @@ class Settings extends Controller
 
     public static function ensure() {
         foreach ( Settings::editable as $s ) {
+            Setting::firstOrCreate( [ 'key' => $s['name'] ], [ 'value' => $s['default'] ] );
+        }
+        foreach ( Settings::cycles as $s ) {
             Setting::firstOrCreate( [ 'key' => $s['name'] ], [ 'value' => $s['default'] ] );
         }
         foreach ( Settings::reserved as $s ) {

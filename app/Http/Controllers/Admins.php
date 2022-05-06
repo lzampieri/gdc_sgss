@@ -14,48 +14,52 @@ use phpDocumentor\Reflection\Types\Boolean;
 
 class Admins extends Controller
 {
+    
     public static function add_event( Request $request ) {
-        
         $validated = $request->validate([
             'actor' => 'required|exists:users,id',
             'target' => 'required|exists:users,id',
-            'finalState' => 'required|boolean'
-        ]);
-        $event = Event::create( [
-            'actor' => $validated['actor'],
-            'target' => $validated['target'],
-            'finalstate' => $validated['finalState']
+            'finalState' => 'required|int'
         ]);
 
-        Mailer::event_created( $event );
+        $sendmail = $request->has( 'sendmail' );
+        $resurrections = $request->has( 'resurrections' );
 
-        if( $validated['finalState'] == false ) {
-            $resuscitation = Pendings::resuscitate( $event );
-            
-            if( $resuscitation )
-                return $resuscitation;
+        if( $validated['finalState'] >= 0 ) {
+            $event = Event::create( [
+                'actor' => $validated['actor'],
+                'target' => $validated['target'],
+                'finalstate' => $validated['finalState']
+            ]);
+            Log::info("Created event", Logger::logParams(['event' => $event] ) );
+
+            if( $sendmail ) {
+                Mailer::event_created( $event );
+            }
+
+            if( ( $validated['finalState'] == 0 ) &&  $resurrections ) {
+                $resuscitation = Pendings::resuscitate( $event, $sendmail );
+
+                if( $resuscitation )
+                    return $resuscitation;
+            }
+        
+            return back()->with( 'positive-message', 'Evento creato.');
         }
+        if( $validated['finalState'] == -1 ) {
+            $pending = PendingKill::create( [
+                'actor' => $validated['actor'],
+                'target' => $validated['target']
+            ]);
+            Log::info("Created pending event", Logger::logParams(['pending_event' => $pending] ) );
 
-        Log::info("Created event", Logger::logParams(['event' => $event] ) );
-
-        return back()->with( 'positive-message', 'Evento creato.');
-    }
-
-    public static function add_pending( Request $request ) {
-        $validated = $request->validate([
-            'actor' => 'required|exists:users,id',
-            'target' => 'required|exists:users,id'
-        ]);
-        $pending = PendingKill::create( [
-            'actor' => $validated['actor'],
-            'target' => $validated['target'],
-        ]);
-
-        Mailer::pending_create( $pending );
-
-        Log::info("Created pending event", Logger::logParams(['pending_event' => $pending] ) );
-
-        return back()->with( 'positive-message', 'Evento supposto creato, mail inviata.');
+            if( $sendmail ) {
+                Mailer::pending_create( $pending );
+            }
+        
+            return back()->with( 'positive-message', 'Evento supposto creato.');
+        }
+        return 1;
     }
 
     public static function set_communication( Request $request ) {

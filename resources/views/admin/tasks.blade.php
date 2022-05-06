@@ -58,6 +58,96 @@
             @error( 'option_value' )
                 <span class="text-red"> {{ $message }} </span>
             @enderror
+            <small>Eseguiti una sola volta, poi eliminati</small>
+            <input type="submit" value="Programma" class="button" />
+        </form>
+    </div>
+
+    <div class="card">
+        <form
+            class="flex flex-col items-center gap-2"
+            method="POST"
+            action="{{ route( 'admin.task.add', [ 'type' => 'add_event' ] ); }}" >
+            <h2>Programma lavoro: evento</h2>
+            @csrf
+            <select class="w-full" name="passcode" id="passcode">
+                @foreach ( $passcodes as $p )
+                    <option value="{{ $p->id }}">
+                        {{ $p->title }}
+                    </option>
+                @endforeach
+            </select>
+            @error( 'passcode' )
+                <span class="text-red"> {{ $message }} </span>
+            @enderror
+            <select class="w-full" name="finalState" id="finalState">
+                <option value="-1">Dichiarazione di morte</option>
+                <option value="0" selected>Morte</option>
+                <option value="1">Resurrezione</option>
+            </select>
+            @error( 'finalState' )
+                <span class="text-red"> {{ $message }} </span>
+            @enderror
+            Agente:
+            <select class="w-full" name="actor" id="actor">
+                @foreach ( App\Models\User::all() as $u )
+                    <option value="{{ $u['id'] }}">
+                        {{ $u['name'] }}
+                    </option>
+                @endforeach
+            </select>
+            @error( 'actor' )
+                <span class="text-red"> {{ $message }} </span>
+            @enderror
+            Vittima:
+            <select class="w-full" name="target" id="target">
+                @foreach ( App\Models\User::all() as $u )
+                    <option value="{{ $u['id'] }}">
+                        {{ $u['name'] }}
+                    </option>
+                @endforeach
+            </select>
+            @error( 'target' )
+                <span class="text-red"> {{ $message }} </span>
+            @enderror
+            <div>
+                <input type="checkbox" name="sendmail" id="sendmail" /> Invia mail
+            </div>
+            <div>
+                <input type="checkbox" name="resurrections" id="resurrections" /> Esegui eventuali resurrezioni
+            </div>
+            <input type="submit" value="Programma" class="button" />
+        </form>
+    </div>
+
+    <div class="card">
+        <form
+            class="flex flex-col items-center gap-2"
+            method="POST"
+            action="{{ route( 'admin.task.add', [ 'type' => 'shuffle_cycle' ] ); }}" >
+            <h2>Programma lavoro: mescolamento cicli</h2>
+            @csrf
+            <select class="w-full" name="passcode" id="passcode">
+                @foreach ( $passcodes as $p )
+                    <option value="{{ $p->id }}">
+                        {{ $p->title }}
+                    </option>
+                @endforeach
+            </select>
+            @error( 'passcode' )
+                <span class="text-red"> {{ $message }} </span>
+            @enderror
+            <select class="w-full" name="cycle_name" id="cycle_name">
+                @foreach ( App\Http\Controllers\Settings::cycles as $s )
+                    <option value="{{ $s['name'] }}">
+                        {{ $s['title'] }}
+                    </option>
+                @endforeach
+            </select>
+            @error( 'cycle_name' )
+                <span class="text-red"> {{ $message }} </span>
+            @enderror
+            <small>Eseguito sempre fino a eliminazione manuale.</small>
             <input type="submit" value="Programma" class="button" />
         </form>
     </div>

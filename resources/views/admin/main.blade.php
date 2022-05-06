@@ -143,7 +143,6 @@
         </tbody>
         </table>
     </div>
-    <x-admin.add_event />
 
     <div class="card">
         <h2>Eventi in attesa</h2>
@@ -178,7 +177,57 @@
         </tbody>
         </table>
     </div>
-    <x-admin.add_pending />
+
+    <div class="card">
+        <form
+            class="flex flex-col items-center gap-2"
+            method="POST"
+            action="{{ route( 'admin.add.event' ); }}" >
+            <h2>Aggiungi evento</h2>
+            @csrf
+            <select class="w-full" name="finalState" id="finalState">
+                <option value="-1">Dichiarazione di morte</option>
+                <option value="0" selected>Morte</option>
+                <option value="1">Resurrezione</option>
+            </select>
+            @error( 'finalState' )
+                <span class="text-red"> {{ $message }} </span>
+            @enderror
+            <div class="flex flex-row items-center">
+                Agente:
+                <select class="w-full" name="actor" id="actor">
+                    @foreach ( App\Models\User::all() as $u )
+                        <option value="{{ $u['id'] }}">
+                            {{ $u['name'] }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            @error( 'actor' )
+                <span class="text-red"> {{ $message }} </span>
+            @enderror
+            <div class="flex flex-row items-center">
+                Vittima:
+                <select class="w-full" name="target" id="target">
+                    @foreach ( App\Models\User::all() as $u )
+                        <option value="{{ $u['id'] }}">
+                            {{ $u['name'] }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            @error( 'target' )
+                <span class="text-red"> {{ $message }} </span>
+            @enderror
+            <div>
+                <input type="checkbox" name="sendmail" id="sendmail" /> Invia mail
+            </div>
+            <div>
+                <input type="checkbox" name="resurrections" id="resurrections" /> Esegui eventuali resurrezioni
+            </div>
+            <input type="submit" value="Salva" class="button" />
+        </form>
+    </div>
 
     <a href="{{ route( 'admin.deleted' ) }}">Eventi eliminati</a>
     <a href="{{ route( 'admin.logs' ) }}">Logs</a>

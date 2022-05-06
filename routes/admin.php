@@ -19,7 +19,7 @@ Route::middleware( ['auth.admin'] )->group( function () {
     // Admin frontend
     Route::get('/admin', function () { return view('admin.main'); })->name('admin.main');
     Route::post('/admin/add_event', [ Admins::class, 'add_event' ] )->name('admin.add.event');
-    Route::post('/admin/add_pending', [ Admins::class, 'add_pending' ] )->name('admin.add.pending');
+    // Route::post('/admin/add_pending', [ Admins::class, 'add_pending' ] )->name('admin.add.pending');
     Route::get('/admin/deleted', function () { return view('admin.deleted'); })->name('admin.deleted');
     Route::get('/admin/option', function () { return view('admin.options'); })->name('admin.option');
     Route::post('/admin/option', [ Admins::class, 'set_communication'] );
