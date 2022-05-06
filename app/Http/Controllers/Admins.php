@@ -90,5 +90,10 @@ class Admins extends Controller
         $path = storage_path('app/backup-db') . "/" . Carbon::now( )->format('Y-m-d') . ".gz";
         $dump->start( $path );
         Log::info("Backup done", Logger::logParams(['path' => $path ] ) );
+
+        return response()->json([
+            'success' => True,
+            'path' => $path
+        ]);
     }
 }
