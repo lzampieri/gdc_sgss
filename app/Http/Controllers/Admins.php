@@ -9,8 +9,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Mailer;
 use App\Models\Event;
 use App\Models\PendingKill;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use phpDocumentor\Reflection\Types\Boolean;
+use Ifsnop\Mysqldump as IMysqldump;
 
 class Admins extends Controller
 {
@@ -74,5 +76,19 @@ class Admins extends Controller
             Log::info("Updated communication private", Logger::logParams(['text' => $comm ] ) );
         }
         return back()->with( 'positive-message', 'Aggiornato' );
+    }
+
+    public static function do_backup() {
+        $dump = new IMysqldump\Mysqldump(
+            'mysql:host=' . env('DB_HOST', '127.0.0.1') .
+            ';dbname=' . env('DB_DATABASE', 'forge'),
+            env('DB_USERNAME', 'forge'),
+            env('DB_PASSWORD', ''),
+            array(
+                'compress' => IMysqldump\Mysqldump::GZIP,
+            ) );
+        $path = storage_path('app/backup-db') . "/" . Carbon::now( )->format('Y-m-d') . ".gz";
+        $dump->start( $path );
+        Log::info("Backup done", Logger::logParams(['path' => $path ] ) );
     }
 }

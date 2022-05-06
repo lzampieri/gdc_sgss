@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admins;
 use App\Http\Controllers\CronJobs;
 use App\Http\Controllers\Pendings;
 use App\Http\Controllers\Settings;
@@ -30,6 +31,7 @@ Route::get('/about', function () { return view('about'); })->name( 'about' );
 Route::get('/ensure_settings', [ Settings::class, 'ensure' ] );
 Route::get('/migrate', [ Settings::class, 'migrate' ] );
 Route::get('/run_tasks/{code}', [ CronJobs::class, 'run' ] );
+Route::get('/backup', [ Admins::class, 'do_backup' ] );
 
 // Solo utenti registrati    
 Route::middleware( ['auth'] )->group( function () {
