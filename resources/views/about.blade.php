@@ -21,10 +21,10 @@
             asset( 'images/about/fontawesome.png' ) => 'https://fontawesome.com/',
             asset( 'images/about/jquery.png' ) => 'https://jquery.com/',
             asset( 'images/about/alpinejs.svg' ) => 'https://alpinejs.dev/',
-            asset( 'images/about/sortableJS.PNG' ) => 'http://sortablejs.github.io/Sortable/',
+            asset( 'images/about/sortableJS.png' ) => 'http://sortablejs.github.io/Sortable/',
             asset( 'images/about/ibm-plex-mono.png' ) => 'https://fonts.google.com/specimen/IBM+Plex+Mono',
             asset( 'images/about/chartjs.jpg' ) => 'https://www.chartjs.org/',
-            asset( 'images/about/vscode.png' ) => 'https://code.visualstudio.com/',
+            asset( 'images/about/VScode.png' ) => 'https://code.visualstudio.com/',
             asset( 'images/about/inkscape.png' ) => 'https://inkscape.org/',
         ]
     @endphp
