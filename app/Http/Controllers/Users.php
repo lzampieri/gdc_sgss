@@ -22,18 +22,49 @@ class Users extends Controller
             return redirect()->intended( route('home') );
         }
 
+        // Check if the user exists but it is trashed
+        $user = User::onlyTrashed()->where( 'email', $email )->first();
+        
+        // If the user exists trashed, redirect to signup with user data
+        return redirect( route( 'signup') )->with( 'email', $email )->with( 'trashed', $user );
+
         // Else, return the signup module
         return redirect( route( 'signup' ) )->with( 'email', $email );
     }
 
-    public static function create( Request $request ) {
+    public static function createOrUpdate( Request $request ) {
         $validated = $request->validate([
-            'email' => 'required|unique:users,email',
+            'email' => 'required',
             'name' => 'required',
             'birthday' => 'required|date|before:today',
             'conditions' => 'accepted'
         ]);
 
+        // Check if the user already exists
+        $user = User::withTrashed()->where( 'email', $validated['email'] )->first();
+
+        // If the user already exists, perform update
+        if( $user ) {
+
+            if( $user->trashed() ) {
+                $user->restore();
+                Log::info("User restored", Logger::logParams( [ 'user' => $user ] ) );
+            }
+
+            $user->name = $validated['name'];
+            $user->birthday = $validated['birthday'];
+            $user->save();
+
+            Auth::login( $user );
+
+            Mailer::welcome_mail();
+
+            Log::info("User updated", Logger::logParams( [ 'user' => $user ] ) );
+
+            return redirect( route('home') )->with( 'positive-message', 'Iscrizione correttamente effettuata!<br/>Ti è stata inviata una mail di conferma.<br/>Verifica di averla ricevuta, controllando anche la cartella SPAM.');
+        }
+
+        // If the user still not exists, perform creation
         $user = User::create([
             'email' => $validated['email'],
             'name' => $validated['name'],

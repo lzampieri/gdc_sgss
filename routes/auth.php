@@ -14,6 +14,6 @@ Route::get('/auth/callback', function () {
 })->name('auth.callback');
 
 Route::get('/signup', function () { return view( 'signup' ); } )->name( 'signup' );
-Route::post('/signup', [ Users::class, 'create' ] );
+Route::post('/signup', [ Users::class, 'createOrUpdate' ] );
 
 Route::get('/signoff', function () { Auth::logout(); return redirect( route('home') ); } )->name( 'signoff' );

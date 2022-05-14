@@ -19,7 +19,7 @@ class Mailer extends Controller
             'Sei nel gioco',
             <<<TXT
                 Ciao $uname!
-                Ti sei iscritto con successo al Gioco del Cucchiaino, edizione 2022.
+                Ti sei iscritto con successo al Gioco del Cucchiaino.
                 Per accedere alla tua pagina privata, dalla quale potrai controllare i tuoi obiettivi e dichiarare le uccisioni, devi effettuare il login all'indirizzo:
                     http://gdcsgss.x10.mx/
                 Non dimenticare di tenere controllata questa casella di posta in attesa di novità.

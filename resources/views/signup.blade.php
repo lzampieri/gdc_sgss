@@ -1,5 +1,10 @@
 @php
 $email = old( 'email', session( 'email' ) );
+
+$trashed = session( 'trashed' );
+$name = old( 'name', $trashed ? $trashed->name : null );
+$birthday = old( 'birthday', $trashed ? $trashed->birthday : null);
+
 @endphp
 
 <x-layouts.main>
@@ -20,13 +25,13 @@ $email = old( 'email', session( 'email' ) );
                 @enderror
 
                 <label class="mt-6">Nome e cognome</label>
-                <input type="text" name="name" id="name" class="w-full mt-2" value="{{ old('name', null ) }}"/>
+                <input type="text" name="name" id="name" class="w-full mt-2" value="{{ $name }}"/>
                 @error( 'name' )
                     <span class="text-red"> {{ $message }} </span>
                 @enderror
 
                 <label class="mt-6">Data di nascita</label>
-                <input type="date" name="birthday" id="birthday" class="w-full mt-2" value="{{ old('birthday', null ) }}"/>
+                <input type="date" name="birthday" id="birthday" class="w-full mt-2" value="{{ $birthday }}"/>
                 @error( 'birthday' )
                     <span class="text-red"> {{ $message }} </span>
                 @enderror
