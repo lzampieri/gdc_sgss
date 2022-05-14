@@ -26,7 +26,7 @@ class Targets extends Controller
             }
             do {
                 $target = User::find( $cycle[ ( ++$index ) % count( $cycle ) ] );
-            } while( !$target->is_alive );
+            } while( !$target || ( !$target->is_alive ) );
             return [ $target ];
         }
         // Single cycle with double target
@@ -39,10 +39,10 @@ class Targets extends Controller
             }
             do {
                 $target1 = User::find( $cycle[ ( ++$index ) % count( $cycle ) ] );
-            } while( !$target1->is_alive );
+            } while( !$target1 || ( !$target1->is_alive ) );
             do {
                 $target2 = User::find( $cycle[ ( ++$index ) % count( $cycle ) ] );
-            } while( !$target2->is_alive );
+            } while( !$target2 || ( !$target2->is_alive ) );
             return [ $target1, $target2 ];
         }
         // Single cycle with single target
@@ -59,7 +59,7 @@ class Targets extends Controller
             }
             do {
                 $target = Team::find( $cycle[ ( ++$index ) % count( $cycle ) ] );
-            } while( !$target->anyAlive() );
+            } while( !$target || ( !$target->anyAlive() ) );
             
             return [ $target ];
         }
