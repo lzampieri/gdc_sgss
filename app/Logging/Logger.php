@@ -3,6 +3,7 @@
 namespace App\Logging;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
 
 class Logger {
@@ -52,4 +53,7 @@ class Logger {
         ]);
     }
 
+    public static function telegramInfo( $text ) {
+        Log::channel('telegram')->info( $text );
+    }
 }

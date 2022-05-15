@@ -62,7 +62,8 @@ class Mailer extends Controller
         $target_email = $event->thetarget->email;
         $actor_email = $event->theactor->email;
         $type = $event->finalstate ? "resurrezione" : "morte";
-        $mail = $target_email . ', ' . $actor_email . ', ' . env( 'MAIL_LIST' );
+        $mail = $target_email . ', ' . $actor_email;
+        $mail .= ', ' . env( 'MAIL_LIST' );
 
         mail(
             $mail,
@@ -74,9 +75,19 @@ class Mailer extends Controller
             env( 'MAIL_HEADERS' )
         );
         Log::info("Send event created mail", Logger::logParams(['to' => $mail] ) );
+
+        Logger::telegramInfo(<<<TXT
+            $type di $target_name a mano di $actor_name.
+        TXT);
     }
 
     public static function cronjobs( $log ) {
+        Logger::telegramInfo(<<<TXT
+                Sono stati svolti i seguenti lavori programmati:
+                $log
+        TXT);
+        Log::info("Send cronjob message", Logger::logParams([]) );
+
         $mail = env( 'MAIL_LIST' );
 
         mail(

@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Mailer;
 use App\Logging\Logger;
 use App\Models\Event;
-use Illuminate\Support\Facades\Log;
 
 class Users extends Controller
 {
     public static function login( $email ) {
+
         // Check if user exists
         $user = User::where( 'email', $email )->first();
 
