@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\NightTaskPasscode;
 use App\Models\PendingKill;
 use App\Models\Setting;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Validator;
 
@@ -50,6 +51,8 @@ class CronJobs extends Controller
             return CronJobs::addNightShuffleTask( $request );
         if( $type == 'add_event' )
             return CronJobs::addEventTask( $request );
+        if( $type == 'custom' )
+            return CronJobs::addCustomTask( $request );
 
         return back()->with( 'negative-message', 'Tipologia di compito non trovata' );
     }
@@ -79,6 +82,8 @@ class CronJobs extends Controller
                 $count += CronJobs::runNightShuffleTask( $t );
             if( $t->action_type == 'add_event' )
                 $count += CronJobs::runEventTask( $t );
+            if( $t->action_type == 'custom' )
+                $count += CronJobs::runCustomTask( $t );
         }
 
         if( $count > 0 )
@@ -243,5 +248,77 @@ class CronJobs extends Controller
 
         $t->delete();
         return 1;
+    }
+
+    const CustomTasks = [
+        [
+            'name' => 'check_old_pendings',
+            'title' => 'Controlla eventi in attesa vecchi',
+            'function' => 'check_old_pendings'
+        ]
+    ];
+
+    public static function addCustomTask( $request ) {
+        $validated = $request->validate([
+            'passcode' => 'required|exists:night_task_passcodes,id',
+            'subkind' => 'required'
+        ]);
+        
+        // Check if the subkind exists
+        $subkind = null;
+        foreach( CronJobs::CustomTasks as $t ) {
+            if( $validated['subkind'] == $t['name'] ) {
+                $subkind = $t;
+                break;
+            }
+        }
+        if( $subkind == null ) {
+            return back()->with( 'negative-message', 'Compito non esistente' );
+        }
+
+        $task = NightTask::create([
+            'action_type' => 'custom',
+            'action_params' => [
+                'subkind' => $validated['subkind'],
+                'title' => $t['title']
+            ],
+            'passcode' => $validated['passcode']
+        ]);
+
+        Log::info( "New task created", Logger::logParams( [ 'task' => $task ] ) );
+        return back()->with( 'positive-message', 'Fatto' );
+    }
+
+    public static function runCustomTask( $task ) {
+        foreach( CronJobs::CustomTasks as $t ) {
+            if( $task->action_params['subkind'] == $t['name'] ) {
+                return CronJobs::{$t['function']}();
+            }
+        }
+        return 0;
+    }
+
+    public static function check_old_pendings() {
+        $must_be_older_than = Carbon::now()->subHours( 24 )->toDateTimeString();
+        $pends = PendingKill::all()->filter(
+            function ($p) use ( $must_be_older_than ) {
+                if( $p->theactor->is_alive == false )
+                    return false;
+                if( $p->thetarget->is_alive == false )
+                    return false;
+                if( $p->created_at->gt( $must_be_older_than ) )
+                    return false;
+                return true;
+            }
+        );
+
+        if( $pends->count() > 0 ) {
+            foreach( $pends as $p ) {
+                TelegramLogger::old_pending( $p );
+            }
+            return 0;
+        }
+
+        return 0;
     }
 }

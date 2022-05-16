@@ -52,6 +52,9 @@ class NightTask extends Model
             $dict = [ -1 => 'Morte presunta', 0 => 'Morte', 1 => 'Resurrezione' ];
             return $dict[ $this->action_params['finalState'] ] . " di " . User::find( $this->action_params['target'] )->name . " a mano di " . User::find( $this->action_params['actor'] )->name . ( $this->action_params['sendmail'] ? " con" : " senza" ) . " spedizione di mail e " . ( $this->action_params['resurrections'] ? "con" : "senza" ) . " eventuali resurrezioni.";
         }
+        if( $this->action_type == 'custom' ) {
+            return $this->action_params['title'];
+        }
         else return "Sconosciuta";
     }
 

@@ -153,6 +153,38 @@
     </div>
 
     <div class="card">
+        <form
+            class="flex flex-col items-center gap-2"
+            method="POST"
+            action="{{ route( 'admin.task.add', [ 'type' => 'custom' ] ); }}">
+            <h2>Programma lavoro: altro</h2>
+            @csrf
+            <select class="w-full" name="passcode" id="passcode">
+                @foreach ( $passcodes as $p )
+                    <option value="{{ $p->id }}">
+                        {{ $p->title }}
+                    </option>
+                @endforeach
+            </select>
+            @error( 'passcode' )
+                <span class="text-red"> {{ $message }} </span>
+            @enderror
+            <select class="w-full" name="subkind" id="subkind">
+                @foreach ( App\Http\Controllers\CronJobs::CustomTasks as $s )
+                    <option value="{{ $s['name'] }}">
+                        {{ $s['title'] }}
+                    </option>
+                @endforeach
+            </select>
+            @error( 'subkind' )
+                <span class="text-red"> {{ $message }} </span>
+            @enderror
+            <small>Eseguiti sempre fino a eliminazione manuale</small>
+            <input type="submit" value="Programma" class="button" />
+        </form>
+    </div>
+
+    <div class="card">
         <h2>Registrazione nuovi cronjob</h2>
         <span class="text-red">Non utilizzare se non pienamente coscienti</span>
         <form class="flex flex-row items-center gap-2" method="POST" action="{{ route( 'admin.cronjob.add' ); }}">
