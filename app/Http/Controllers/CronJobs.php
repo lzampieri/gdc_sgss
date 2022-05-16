@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Logging\Logger;
+use App\Logging\TelegramLogger;
 use App\Models\Event;
 use App\Models\NightTask;
 use Illuminate\Http\Request;
@@ -81,7 +82,7 @@ class CronJobs extends Controller
         }
 
         if( $count > 0 )
-            Mailer::cronjobs( $log );
+            TelegramLogger::cronjobs( $log );
 
         return response()->json([
             'success' => True,

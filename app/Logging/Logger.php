@@ -3,7 +3,6 @@
 namespace App\Logging;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
 
 class Logger {
@@ -51,9 +50,5 @@ class Logger {
         return array_merge( $params, [
             'identity' => ( Auth::check() ? Auth::user()->email : "Guest: " . Request::ip() )
         ]);
-    }
-
-    public static function telegramInfo( $text ) {
-        Log::channel('telegram')->info( $text );
     }
 }

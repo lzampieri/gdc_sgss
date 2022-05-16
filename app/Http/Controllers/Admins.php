@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Mailer;
+use App\Logging\TelegramLogger;
 use App\Models\Event;
 use App\Models\PendingKill;
 use Carbon\Carbon;
@@ -38,6 +39,7 @@ class Admins extends Controller
             if( $sendmail ) {
                 Mailer::event_created( $event );
             }
+            TelegramLogger::event_created( $event );
 
             if( ( $validated['finalState'] == 0 ) &&  $resurrections ) {
                 $resuscitation = Pendings::resuscitate( $event, $sendmail );

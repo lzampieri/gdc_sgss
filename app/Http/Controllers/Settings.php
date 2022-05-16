@@ -78,6 +78,15 @@ class Settings extends Controller
                 '48' => 'Su uccisione, entro 48h, di un qualsiasi obiettivo',
             ],
             'default' => 'disabled'
+        ],
+        [
+            'name' => 'notify_registrations',
+            'title' => 'Notifica su Telegram tutte le registrazioni',
+            'dict' => [
+                '0' => 'Non attivo',
+                '1' => 'Attivo'
+            ],
+            'default' => '1'
         ]
     ];
 

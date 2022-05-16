@@ -74,13 +74,6 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
-  'rafaellaurindo/laravel-telegram-logging' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'RLaurindo\\TelegramLogger\\TelegramLoggerServiceProvider',
-    ),
-  ),
   'rap2hpoutre/laravel-log-viewer' => 
   array (
     'providers' => 

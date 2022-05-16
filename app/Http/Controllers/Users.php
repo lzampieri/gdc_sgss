@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Mailer;
 use App\Logging\Logger;
-use App\Models\Event;
+use App\Logging\TelegramLogger;
+use Illuminate\Support\Facades\Log;
 
 class Users extends Controller
 {
@@ -24,9 +25,11 @@ class Users extends Controller
 
         // Check if the user exists but it is trashed
         $user = User::onlyTrashed()->where( 'email', $email )->first();
-        
-        // If the user exists trashed, redirect to signup with user data
-        return redirect( route( 'signup') )->with( 'email', $email )->with( 'trashed', $user );
+
+        if( $user ) {
+            // If the user exists trashed, redirect to signup with user data
+            return redirect( route( 'signup') )->with( 'email', $email )->with( 'trashed', $user );
+        }
 
         // Else, return the signup module
         return redirect( route( 'signup' ) )->with( 'email', $email );
@@ -49,6 +52,7 @@ class Users extends Controller
             if( $user->trashed() ) {
                 $user->restore();
                 Log::info("User restored", Logger::logParams( [ 'user' => $user ] ) );
+                TelegramLogger::registration( $user );
             }
 
             $user->name = $validated['name'];
@@ -76,6 +80,7 @@ class Users extends Controller
         Mailer::welcome_mail();
 
         Log::info("User created", Logger::logParams( [ 'user' => $user ] ) );
+        TelegramLogger::registration( $user );
 
         return redirect( route('home') )->with( 'positive-message', 'Iscrizione correttamente effettuata!<br/>Ti è stata inviata una mail di conferma.<br/>Verifica di averla ricevuta, controllando anche la cartella SPAM.');
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Logging\Logger;
+use App\Logging\TelegramLogger;
 use App\Models\Event;
 use App\Models\PendingKill;
 use App\Models\Setting;
@@ -52,6 +53,7 @@ class Pendings extends Controller
         ]);
 
         Mailer::event_created( $event );
+        TelegramLogger::event_created( $event );
 
         Log::info("Created event from pending approvation", Logger::logParams(['event' => $event] ) );
         
@@ -109,6 +111,7 @@ class Pendings extends Controller
         if( $send_mail ) {
             Mailer::event_created( $event );
         }
+        TelegramLogger::event_created( $event );
         
         Log::info("Created event from automatic resurrection", Logger::logParams(['event' => $event] ) );
         

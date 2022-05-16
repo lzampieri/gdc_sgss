@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "43ff4f1befda542cc8ed0db53074f4ed",
+    "content-hash": "d331aeed7f69c2914c71f597b93804d8",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3145,71 +3145,6 @@
                 "source": "https://github.com/bobthecow/psysh/tree/v0.11.2"
             },
             "time": "2022-02-28T15:28:54+00:00"
-        },
-        {
-            "name": "rafaellaurindo/laravel-telegram-logging",
-            "version": "v1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rafaellaurindo/laravel-telegram-logging.git",
-                "reference": "4f7d1a388a33a9e15f768162fd2ad01f5ee44c76"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rafaellaurindo/laravel-telegram-logging/zipball/4f7d1a388a33a9e15f768162fd2ad01f5ee44c76",
-                "reference": "4f7d1a388a33a9e15f768162fd2ad01f5ee44c76",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "7.0 || ^8.0 || ^9.0",
-                "monolog/monolog": "2.*",
-                "php": ">=7.2"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "RLaurindo\\TelegramLogger\\TelegramLoggerServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "RLaurindo\\TelegramLogger\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Rafael Laurindo",
-                    "email": "rafaelfilholm@gmail.com",
-                    "homepage": "https://rafaellaurindo.com.br"
-                }
-            ],
-            "description": "Send Laravel logs to a Telegram chat via Telegram Bot.",
-            "homepage": "https://github.com/rafaellaurindo/laravel-telegram-logging",
-            "support": {
-                "issues": "https://github.com/rafaellaurindo/laravel-telegram-logging/issues",
-                "source": "https://github.com/rafaellaurindo/laravel-telegram-logging/tree/v1.0.1"
-            },
-            "funding": [
-                {
-                    "url": "https://ko-fi.com/rafaellaurindo",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://www.buymeacoffee.com/rafaellaurindo",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://www.paypal.me/rafaellaurindo",
-                    "type": "custom"
-                }
-            ],
-            "time": "2022-02-18T17:47:18+00:00"
         },
         {
             "name": "ralouphie/getallheaders",

@@ -8,6 +8,7 @@
         <a class="button" href="{{ route('admin.stats') }}">Statistiche</a>
         <a class="button" href="{{ route('admin.tasks') }}">Compiti</a>
         <a class="button" href="{{ route('admin.exports') }}">Esporta</a>
+        <a class="button" href="https://t.me/+3AOObxQWxUc0MTE0">Notifiche</a>
     </div>
 
     <div class="card">

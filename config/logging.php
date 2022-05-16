@@ -73,11 +73,11 @@ return [
             'level' => 'emergency'
         ],
 
-        'telegram' => [
-            'driver' => 'custom',
-            'via'    => RLaurindo\TelegramLogger\TelegramLogger::class,
-            'level'  => 'debug',
-        ]        
+        // 'telegram' => [
+        //     'driver' => 'custom',
+        //     'via'    => RLaurindo\TelegramLogger\TelegramLogger::class,
+        //     'level'  => 'debug',
+        // ]        
 
         // 'daily' => [
         //     'driver' => 'daily',
