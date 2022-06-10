@@ -111,6 +111,14 @@ class Settings extends Controller
         [
             'name' => 'communication_private',
             'default' => ''
+        ],
+        [
+            'name' => 'last_reset',
+            'default' => 0 
+        ],
+        [
+            'name' => 'reset_code',
+            'default' => 'aaa'
         ]
     ];
 

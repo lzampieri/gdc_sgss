@@ -60,11 +60,16 @@ class TelegramLogger {
     public static function cronjobs( $log ) {
         TelegramLogger::sendInfoMessage( "Sono stati svolti i seguenti lavori programmati:\n" . $log );
     }
-
+    
     public static function old_pending( $pend ) {
         $text = "È stato rilevato un evento in attesa vecchio più di 24 ore:\n";
         $text .= "Morte di " . $pend->thetarget->name . " per mano di " . $pend->theactor->name . "\n";
         $text .= "Caricato " . Carbon::now()->diffInHours( $pend->created_at ) . " ore fa.";
         TelegramLogger::sendEmergencyMessage( $text );
     }
+
+    public static function reset_done( ) {
+        TelegramLogger::sendInfoMessage( "Il sistema è stato completamente resettato." );
+    }
+
 }

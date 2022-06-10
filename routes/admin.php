@@ -4,6 +4,7 @@ use App\Exports\ExportsController;
 use App\Http\Controllers\Admins;
 use App\Http\Controllers\CronJobs;
 use App\Http\Controllers\Events;
+use App\Http\Controllers\ResetGame;
 use App\Http\Controllers\RollOfHonorEntries;
 use App\Http\Controllers\Settings;
 use App\Http\Controllers\Teams;
@@ -69,4 +70,8 @@ Route::middleware( ['auth.admin'] )->group( function () {
 
     // View the log
     Route::get('/admin/logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->name('admin.logs');
+
+    // Reset the game
+    Route::get('/admin/reset', function () { return view('admin.reset'); } )->name('admin.reset');
+    Route::post('/admin/reset', [ ResetGame::class, 'reset' ] );
 });

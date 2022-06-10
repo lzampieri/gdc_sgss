@@ -1,6 +1,6 @@
 <x-layouts.main>
 
-    <div class="flex flex-row flex-wrap">
+    <div class="flex flex-row flex-wrap items-center justify-center">
         <a class="button" href="{{ route('home') }}">Home</a>
         <a class="button" href="{{ route('admin.option') }}">Opzioni di gioco</a>
         <a class="button" href="{{ route('admin.teams') }}">Squadre</a>
@@ -9,6 +9,7 @@
         <a class="button" href="{{ route('admin.tasks') }}">Compiti</a>
         <a class="button" href="{{ route('admin.roll-of-honors') }}">Albo d'oro</a>
         <a class="button" href="{{ route('admin.exports') }}">Esporta</a>
+        <a class="button" href="{{ route('admin.reset') }}">Reset</a>
         <a class="button" href="https://t.me/+3AOObxQWxUc0MTE0">Notifiche</a>
     </div>
 
