@@ -22,6 +22,7 @@
             asset( 'images/about/jquery.png' ) => 'https://jquery.com/',
             asset( 'images/about/alpinejs.svg' ) => 'https://alpinejs.dev/',
             asset( 'images/about/sortableJS.png' ) => 'http://sortablejs.github.io/Sortable/',
+            asset( 'images/about/editorjs.png' ) => 'https://editorjs.io/',
             asset( 'images/about/ibm-plex-mono.png' ) => 'https://fonts.google.com/specimen/IBM+Plex+Mono',
             asset( 'images/about/chartjs.jpg' ) => 'https://www.chartjs.org/',
             asset( 'images/about/VScode.png' ) => 'https://code.visualstudio.com/',
