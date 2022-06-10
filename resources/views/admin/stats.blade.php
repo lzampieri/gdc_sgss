@@ -4,4 +4,6 @@
     <x-stats.alive />
 
     <x-stats.kills />
+
+    <x-stats.teams-kills />
 </x-layouts.main>

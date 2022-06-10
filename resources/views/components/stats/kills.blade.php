@@ -24,6 +24,7 @@
     var users_data = [
         @foreach ( $users as $user )
             {
+                id: {{ $user->id }},
                 name: '{{ $user->name }}',
                 email: '{{ $user->email }}',
                 birthday: '{{ \Carbon\Carbon::parse( $user->birthday )->format( 'd-m') }}',
