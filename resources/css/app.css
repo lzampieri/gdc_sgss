@@ -86,5 +86,13 @@
     #kills_table td {
         @apply py-2
     }
+
+    #teams_kills_table tbody tr {
+        @apply text-center border-grey border-y-2 hover:bg-grey
+    }
+
+    #teams_kills_table td {
+        @apply py-2
+    }
       
 }

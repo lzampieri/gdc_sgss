@@ -47,6 +47,9 @@ class Logger {
         if( isset( $params['task'] ) ) {
             $params['task'] = "Task " . $params['task']->explain() . " with passcode " . $params['task']->thepasscode->name . " (" . $params['task']->thepasscode->id . ")";
         }
+        if( isset( $params['roh'] ) ) {
+            $params['roh'] = "RollOfHonor " . ( $params['roh']['draft'] ? '(Bozza)' : '' ) . $params['roh']['title'] . " (" . $params['roh']['id'] . ")";
+        }
         return array_merge( $params, [
             'identity' => ( Auth::check() ? Auth::user()->email : "Guest: " . Request::ip() )
         ]);

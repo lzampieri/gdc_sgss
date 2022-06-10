@@ -14,6 +14,7 @@ const mix = require('laravel-mix');
 mix
     .setResourceRoot("..")
     .js('resources/js/app.js', 'public/js')
+    .js('resources/js/editorjs.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require("tailwindcss"),
     ])

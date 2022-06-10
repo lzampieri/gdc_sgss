@@ -22,7 +22,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () { return view('home');  })->name('home');
 
 // Pagine pubbliche
-Route::get('/albo-doro', function () { return view('albo-doro'); })->name( 'albo-doro' );
+Route::get('/new-albo-doro', function () { return view('albo-doro'); })->name( 'albo-doro' );
+Route::get('/old-albo-doro', function () { return view('old-albo-doro'); })->name( 'old-albo-doro'); // todo remove
+Route::redirect('/albo-doro','/new-albo-doro');
 Route::get('/regolamento', function () { return redirect( asset( 'files/regolamento.pdf') ); })->name( 'regolamento' );
 Route::get('/terms', function () { return view('terms'); })->name( 'terms' );
 Route::get('/about', function () { return view('about'); })->name( 'about' );

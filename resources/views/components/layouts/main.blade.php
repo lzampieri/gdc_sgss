@@ -6,8 +6,7 @@
             <img class="max-h-[250px] max-w-full m-auto" src="{{ asset( 'images/logo.png' ); }}" />
         </div>
         
-        <div class="w-full flex flex-col items-center mb-36 gap-4">
-            <x-layouts.nav />
+        <div class="w-full flex flex-col items-center mb-36 gap-4" {{ $attributes }}>
             <x-layouts.messagges />
             {{ $slot }}
         </div>
